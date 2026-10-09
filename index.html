@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎃 Halloween Tech Lab</title>
+<style>
+:root {
+    --bg: #0a0510;
+    --surface: #14101f;
+    --surface-hover: #1e1730;
+    --orange: #f97316;
+    --orange-dark: #c2410c;
+    --purple: #a855f7;
+    --purple-dark: #6b21a8;
+    --green: #22c55e;
+    --yellow: #facc15;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border: #2a2440;
+    --radius: 18px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji',
+                 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: radial-gradient(circle at top, #1e1435 0%, #0a0510 60%);
+    color: var(--text-main);
+    min-height: 100vh;
+    padding: 24px 16px 80px;
+    line-height: 1.6;
+}
+.container { max-width: 900px; margin: 0 auto; }
+
+/* ============ HERO ============ */
+.hero {
+    background: linear-gradient(135deg, rgba(168,85,247,0.25) 0%, rgba(249,115,22,0.25) 100%);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px 28px;
+    text-align: center;
+    margin-bottom: 22px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+}
+.hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+        radial-gradient(2px 2px at 15% 25%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 80% 15%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1.5px 1.5px at 60% 70%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(2px 2px at 30% 85%, rgba(255,255,255,0.5), transparent);
+    animation: piscar 3s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+@keyframes piscar { from { opacity: 0.4; } to { opacity: 1; } }
+.hero h1 {
+    font-size: 2.4rem;
+    color: var(--orange);
+    text-shadow: 0 0 18px rgba(249,115,22,0.6);
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 2;
+}
+.hero h1 .emoji { display: inline-block; animation: flutuar 2.5s ease-in-out infinite; }
+@keyframes flutuar {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-8px); }
+}
+.hero .subtitulo {
+    color: #e2e8f0;
+    max-width: 720px;
+    margin: 0 auto 18px;
+    font-size: 1.02rem;
+    position: relative;
+    z-index: 2;
+}
+.hero .badges {
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+    position: relative; z-index: 2;
+}
+.badge {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid var(--border);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+/* ============ CARDS ============ */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 26px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+.card h2 {
+    color: var(--orange);
+    font-size: 1.35rem;
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+}
+.card p { color: #cbd5e1; font-size: 0.96rem; margin-bottom: 12px; }
+.card p:last-child { margin-bottom: 0; }
+.card code {
+    background: rgba(255,255,255,0.08);
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-size: 0.88em;
+    color: var(--yellow);
+    font-family: 'Courier New', monospace;
+}
+
+/* ============ BOTÕES ============ */
+.btn-desafio {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 26px;
+    font-size: 1rem;
+    font-weight: 900;
+    text-decoration: none;
+    transition: 0.25s;
+    box-shadow: 0 0 20px rgba(249,115,22,0.4);
+    margin: 6px 0 10px;
+}
+.btn-desafio:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(249,115,22,0.7);
+}
+.btn-desafio .seta { transition: transform 0.25s; }
+.btn-desafio:hover .seta { transform: translateX(5px); }
+
+.btn-submeter {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--purple), var(--orange));
+    color: #fff;
+    padding: 16px 34px;
+    border-radius: 30px;
+    font-size: 1.05rem;
+    font-weight: 900;
+    text-decoration: none;
+    transition: 0.25s;
+    box-shadow: 0 0 24px rgba(168,85,247,0.45);
+    margin-top: 8px;
+}
+.btn-submeter:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 36px rgba(249,115,22,0.7);
+}
+
+/* ============ INFO PDF ============ */
+.info-pdf {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin: 16px 0;
+}
+.info-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--purple);
+    border-radius: 12px;
+    padding: 16px 18px;
+    transition: 0.2s;
+}
+.info-item:hover {
+    border-left-color: var(--orange);
+    background: var(--surface-hover);
+    transform: translateY(-3px);
+}
+.info-item .icone {
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 8px;
+}
+.info-item h4 {
+    color: #fff;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+}
+.info-item p {
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    margin: 0;
+    line-height: 1.5;
+}
+.info-item p code {
+    background: rgba(255,255,255,0.08);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    color: var(--yellow);
+    font-family: 'Courier New', monospace;
+}
+.aviso-importante {
+    background: rgba(250,204,21,0.08);
+    border-left: 4px solid var(--yellow);
+    border-radius: 12px;
+    padding: 14px 18px;
+    color: #fef3c7;
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
+.aviso-importante strong { color: #fff; }
+
+/* ============ PASSO A PASSO ============ */
+.passos {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 8px;
+}
+.passo {
+    display: flex;
+    gap: 16px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--purple);
+    border-radius: 12px;
+    padding: 16px 18px;
+    transition: 0.2s;
+}
+.passo:hover {
+    border-left-color: var(--orange);
+    background: var(--surface-hover);
+    transform: translateX(4px);
+}
+.passo .num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900;
+    font-size: 1rem;
+    box-shadow: 0 0 12px rgba(168,85,247,0.5);
+}
+.passo .conteudo { flex: 1; }
+.passo .conteudo h4 {
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+.passo .conteudo p {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin: 0;
+}
+.passo .conteudo code {
+    background: rgba(255,255,255,0.08);
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    color: var(--yellow);
+    font-family: 'Courier New', monospace;
+}
+.passo .conteudo a {
+    color: var(--orange);
+    font-weight: 800;
+    text-decoration: none;
+}
+.passo .conteudo a:hover { text-decoration: underline; }
+
+/* ============ FOOTER ============ */
+footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--border);
+}
+footer a {
+    color: var(--orange);
+    text-decoration: none;
+    font-weight: 700;
+}
+footer a:hover { text-decoration: underline; }
+
+/* ============ RESPONSIVO ============ */
+@media (max-width: 640px) {
+    .hero { padding: 28px 18px; }
+    .hero h1 { font-size: 1.7rem; }
+    .card { padding: 20px 18px; }
+    .passo { padding: 14px; gap: 12px; }
+    .passo .num { width: 30px; height: 30px; font-size: 0.9rem; }
+    .btn-desafio { padding: 12px 22px; font-size: 0.92rem; }
+    .btn-submeter { padding: 14px 24px; font-size: 0.95rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ================= HERO ================= -->
+    <header class="hero">
+        <h1><span class="emoji">🎃</span> Halloween Tech Lab</h1>
+        <p class="subtitulo">
+            Desafio prático de desenvolvimento web com animações reais: acenda uma
+            abóbora em SVG, invoque fantasmas no céu e pilote um morcego desviando
+            de obstáculos. Cada laboratório vive em seu próprio arquivo HTML.
+        </p>
+        <div class="badges">
+            <span class="badge">💻 HTML + CSS + JS</span>
+            <span class="badge">🎨 SVG + Canvas</span>
+            <span class="badge">🌐 Publicar no GitHub Pages</span>
+            <span class="badge">📄 Enviar PDF de respostas</span>
+        </div>
+    </header>
+
+    <!-- ================= O QUE É O DESAFIO ================= -->
+    <section class="card">
+        <h2>🎯 O que é o desafio?</h2>
+        <p>
+            Você receberá <strong>3 laboratórios animados prontos</strong>
+            (código-fonte completo). Sua missão é separar cada um em um
+            arquivo <code>.html</code> independente, gerar o PDF de respostas,
+            montar um portal com 4 links e publicar tudo no
+            <strong>GitHub Pages</strong>.
+        </p>
+        <p style="text-align:center;">
+            <a class="btn-desafio"
+               href="halloween-tech-lab.html"
+               target="_blank"
+               rel="noopener">
+                📄 Abrir página do desafio
+                <span class="seta">→</span>
+            </a>
+        </p>
+        <p>
+            No final, submeta o link do seu portal na <strong>Vitrine do ConectaDS</strong>
+            para avaliação do professor.
+        </p>
+    </section>
+
+    <!-- ================= PDF DE RESPOSTAS ================= -->
+    <section class="card">
+        <h2>📄 O que é o "PDF de respostas"?</h2>
+        <p>
+            É o <strong>arquivo final da sua avaliação</strong>, gerado automaticamente
+            pela própria página do desafio. Ele funciona como uma <strong>prova digital
+            preenchida por você</strong> e entregue ao professor.
+        </p>
+
+        <div class="info-pdf">
+
+            <div class="info-item">
+                <span class="icone">📝</span>
+                <h4>O que tem dentro</h4>
+                <p>
+                    Seu <strong>nome</strong>, <strong>turma</strong>, <strong>data</strong>
+                    e as <strong>respostas das 10 questões objetivas</strong> sobre o código
+                    dos 3 laboratórios.
+                </p>
+            </div>
+
+            <div class="info-item">
+                <span class="icone">🎯</span>
+                <h4>Para que serve</h4>
+                <p>
+                    É a forma oficial de <strong>entregar sua avaliação</strong>. Sem o PDF,
+                    o professor não consegue corrigir suas respostas.
+                </p>
+            </div>
+
+            <div class="info-item">
+                <span class="icone">🖨️</span>
+                <h4>Como é gerado</h4>
+                <p>
+                    Você responde as questões na aba <strong>🔮 Avaliação</strong>, clica em
+                    <strong>🖨️ Imprimir em PDF</strong> e escolhe <strong>"Salvar como PDF"</strong>
+                    na janela de impressão do navegador.
+                </p>
+            </div>
+
+            <div class="info-item">
+                <span class="icone">📦</span>
+                <h4>Onde ele vai</h4>
+                <p>
+                    O arquivo <code>respostas-halloween-tech-lab.pdf</code> deve ficar na
+                    <strong>mesma pasta</strong> dos outros arquivos do projeto e ser
+                    enviado junto ao GitHub.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="aviso-importante">
+            ⚠️ <strong>Atenção:</strong> o PDF <strong>não é corrigido automaticamente</strong>
+            pela página. Ele apenas registra suas respostas — a correção é feita
+            <strong>manualmente pelo professor</strong>, comparando com o gabarito oficial.
+        </div>
+    </section>
+
+    <!-- ================= PASSO A PASSO ================= -->
+    <section class="card">
+        <h2>📋 Passo a passo</h2>
+        <div class="passos">
+
+            <div class="passo">
+                <div class="num">1</div>
+                <div class="conteudo">
+                    <h4>Separar os 3 laboratórios em arquivos diferentes</h4>
+                    <p>
+                        Cada lab vira um arquivo próprio:
+                        <code>lab1-abobora.html</code>,
+                        <code>lab2-fantasmas.html</code> e
+                        <code>lab3-morcego.html</code>.
+                        Use a aba <strong>📦 Arquivo Único</strong> de cada lab como base.
+                    </p>
+                </div>
+            </div>
+
+            <div class="passo">
+                <div class="num">2</div>
+                <div class="conteudo">
+                    <h4>Gerar o PDF de respostas (sua avaliação)</h4>
+                    <p>
+                        O PDF é a <strong>entrega oficial da sua avaliação</strong>: contém
+                        seu nome, turma, data e as respostas das 10 questões objetivas.
+                        Vá até a aba <strong>🔮 Avaliação</strong>, preencha nome e turma,
+                        responda as questões e clique em <strong>🖨️ Imprimir em PDF</strong>
+                        (escolha <strong>"Salvar como PDF"</strong>). Guarde o arquivo como
+                        <code>respostas-halloween-tech-lab.pdf</code>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="passo">
+                <div class="num">3</div>
+                <div class="conteudo">
+                    <h4>Criar sua página index.html (portal)</h4>
+                    <p>
+                        Sua <code>index.html</code> deve ter o título
+                        <strong>🎃 Halloween Tech Lab</strong> e conter
+                        <strong>4 links</strong>: os 3 laboratórios + o PDF com suas respostas.
+                        Todos os arquivos devem estar na <strong>mesma pasta</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="passo">
+                <div class="num">4</div>
+                <div class="conteudo">
+                    <h4>Subir tudo no GitHub</h4>
+                    <p>
+                        Crie um repositório público no seu GitHub, envie os
+                        <strong>5 arquivos</strong> (<code>index.html</code> + 3 labs + PDF)
+                        e ative o <strong>GitHub Pages</strong> nas configurações do repositório.
+                    </p>
+                </div>
+            </div>
+
+            <div class="passo">
+                <div class="num">5</div>
+                <div class="conteudo">
+                    <h4>Submeter na Vitrine ConectaDS</h4>
+                    <p>
+                        Com o portal no ar, envie o link dele na
+                        <a href="https://tdsjuizdefora-art.github.io/conecta-ds"
+                           target="_blank"
+                           rel="noopener">
+                            Vitrine do ConectaDS
+                        </a>
+                        clicando no botão abaixo.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= CTA FINAL ================= -->
+    <section class="card" style="text-align:center;">
+        <h2 style="justify-content:center;">🏁 Pronto para entregar?</h2>
+        <p>
+            Depois de publicar seu portal no GitHub Pages e testar os 4 links,
+            clique no botão abaixo para submeter na Vitrine do ConectaDS.
+        </p>
+        <a class="btn-submeter"
+           href="https://tdsjuizdefora-art.github.io/conecta-ds"
+           target="_blank"
+           rel="noopener">
+            🚀 Submeter Projeto na Vitrine ConectaDS
+            <span class="seta">→</span>
+        </a>
+    </section>
+
+    <footer>
+        <p>🎃 <strong>Halloween Tech Lab</strong> — Desafio de Desenvolvimento Web</p>
+    </footer>
+
+</div>
+
+</body>
+</html>

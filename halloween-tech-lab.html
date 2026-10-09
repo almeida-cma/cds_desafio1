@@ -1,0 +1,2360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎃 Especial de Halloween: Histórias, Códigos & OneCompiler</title>
+<style>
+:root {
+    --bg: #090a10;
+    --surface: #121422;
+    --surface-hover: #1b1e33;
+    --orange: #f97316;
+    --orange-dark: #c2410c;
+    --purple: #a855f7;
+    --purple-dark: #6b21a8;
+    --green: #22c55e;
+    --yellow: #facc15;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border: #262a42;
+    --radius: 18px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body, button, input, textarea {
+    font-family: 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji',
+                 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+body {
+    background: radial-gradient(circle at top, #1e1435 0%, #090a10 60%);
+    color: var(--text-main);
+    min-height: 100vh;
+    padding: 24px 16px 80px;
+    line-height: 1.6;
+}
+.container { max-width: 1050px; margin: 0 auto; }
+.hero-halloween {
+    background: linear-gradient(135deg, rgba(168,85,247,0.2) 0%, rgba(249,115,22,0.2) 100%);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 34px 24px;
+    text-align: center;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+.hero-halloween h1 {
+    font-size: 2.2rem;
+    color: var(--orange);
+    text-shadow: 0 0 14px rgba(249,115,22,0.5);
+    margin-bottom: 8px;
+}
+.hero-halloween h1 span { color: var(--purple); }
+.hero-halloween p {
+    color: var(--text-muted);
+    max-width: 780px;
+    margin: 0 auto;
+    font-size: 0.98rem;
+}
+.badges-top { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+.badge {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+.tabs-nav { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 22px; }
+.tab-btn {
+    background: var(--surface);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.2s;
+    font-family: inherit;
+}
+.tab-btn:hover { color: #fff; background: var(--surface-hover); }
+.tab-btn.active {
+    background: var(--orange);
+    color: #fff;
+    border-color: var(--orange);
+    box-shadow: 0 0 16px rgba(249, 115, 22, 0.4);
+}
+.tab-content { display: none; animation: fadeIn 0.3s ease-out; }
+.tab-content.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 26px;
+    margin-bottom: 22px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+.card h2 {
+    color: var(--orange);
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+    font-size: 1.4rem;
+}
+.card p { color: #cbd5e1; font-size: 0.95rem; margin-bottom: 12px; }
+.callout { padding: 14px 18px; border-radius: 12px; margin: 14px 0; font-size: 0.92rem; line-height: 1.6; }
+.callout.orange { background: rgba(249, 115, 22, 0.1); border-left: 4px solid var(--orange); color: #fed7aa; }
+.callout.purple { background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--purple); color: #e9d5ff; }
+.grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+.item-card {
+    background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 14px;
+    padding: 18px; transition: 0.2s;
+}
+.item-card:hover { transform: translateY(-3px); border-color: var(--purple); background: var(--surface-hover); }
+.item-card .icone { font-size: 2.2rem; margin-bottom: 8px; display: block; }
+.item-card h4 { font-size: 1.05rem; margin-bottom: 6px; color: #fff; }
+.item-card p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
+.lab-card {
+    background: #0d0f1a;
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 26px;
+}
+.lab-header {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 10px; margin-bottom: 14px;
+}
+.lab-title { font-size: 1.15rem; font-weight: 800; color: #f8fafc; display: flex; align-items: center; gap: 8px; }
+.btn-onecompiler {
+    background: linear-gradient(135deg, #ea580c, #f59e0b);
+    color: white; border: none; padding: 10px 18px; border-radius: 22px;
+    font-size: 0.85rem; font-weight: 800; cursor: pointer; transition: 0.2s;
+    display: inline-flex; align-items: center; gap: 6px; font-family: inherit;
+}
+.btn-onecompiler:hover { transform: scale(1.05); box-shadow: 0 0 16px rgba(234, 88, 12, 0.5); }
+.instrucoes-onecompiler {
+    background: rgba(249,115,22,0.06);
+    border-left: 4px solid var(--orange);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 12px 0 18px;
+    font-size: 0.85rem;
+    color: #fed7aa;
+    line-height: 1.7;
+}
+.instrucoes-onecompiler strong {
+    color: #fff;
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.88rem;
+}
+.instrucoes-onecompiler ol { margin: 8px 0 0 22px; padding: 0; }
+.instrucoes-onecompiler li { margin-bottom: 4px; }
+.instrucoes-onecompiler kbd {
+    background: rgba(0,0,0,0.35);
+    border: 1px solid var(--border);
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85em;
+    color: var(--yellow);
+}
+.toast-copiado {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+    color: #052e16;
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    z-index: 9999;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.55);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: toastEntrar 0.3s ease-out;
+    max-width: 340px;
+    line-height: 1.4;
+}
+.toast-copiado .icone-toast { font-size: 1.5rem; flex-shrink: 0; }
+.toast-copiado.saindo { animation: toastSair 0.3s ease-in forwards; }
+@keyframes toastEntrar {
+    from { opacity: 0; transform: translateX(40px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes toastSair {
+    from { opacity: 1; transform: translateX(0); }
+    to   { opacity: 0; transform: translateX(40px); }
+}
+.lab-preview {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px; text-align: center; margin-bottom: 16px;
+    position: relative; overflow: hidden;
+}
+.code-nav { display: flex; gap: 4px; border-bottom: 2px solid var(--border); margin-bottom: 0; flex-wrap: wrap; }
+.code-tab-btn {
+    background: transparent; border: none; color: var(--text-muted);
+    padding: 8px 14px; font-size: 0.82rem; font-weight: 700; cursor: pointer;
+    border-bottom: 3px solid transparent; transition: 0.2s; font-family: inherit;
+}
+.code-tab-btn:hover { color: #fff; background: rgba(255,255,255,0.04); }
+.code-tab-btn.active { color: var(--purple); border-bottom-color: var(--purple); background: rgba(168,85,247,0.08); }
+.code-pane-box {
+    position: relative; background: #05060b; border-radius: 0 0 12px 12px;
+    border: 1px solid var(--border); border-top: none; overflow: hidden; margin-bottom: 10px;
+}
+.code-pane { display: none; margin: 0; }
+.code-pane.active { display: block; }
+.code-pane pre {
+    padding: 16px; color: #e2e8f0; font-family: 'Courier New', monospace;
+    font-size: 0.8rem; line-height: 1.6; overflow-x: auto; white-space: pre; max-height: 320px;
+}
+.btn-copy-code {
+    position: absolute; top: 10px; right: 10px; background: var(--green);
+    color: #052e16; border: none; padding: 6px 14px; border-radius: 8px;
+    font-size: 0.78rem; font-weight: 800; cursor: pointer; transition: 0.2s; z-index: 2;
+    font-family: inherit;
+}
+.btn-copy-code:hover { background: #16a34a; color: #fff; transform: scale(1.05); }
+.btn-widget {
+    background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+    color: white; border: none; padding: 10px 20px; border-radius: 20px;
+    font-weight: 700; cursor: pointer; transition: 0.2s; font-size: 0.88rem; margin: 4px;
+    font-family: inherit;
+}
+.btn-widget:hover { transform: scale(1.03); box-shadow: 0 0 12px rgba(249, 115, 22, 0.4); }
+.btn-widget.purple { background: linear-gradient(135deg, var(--purple), var(--purple-dark)); }
+.btn-widget.green  { background: linear-gradient(135deg, #16a34a, #22c55e); }
+.btn-widget.red    { background: linear-gradient(135deg, #b91c1c, #ef4444); }
+.btn-widget.blue   { background: linear-gradient(135deg, #0369a1, #0ea5e9); }
+.question-box {
+    background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 14px;
+    padding: 18px; margin-bottom: 14px; border-left: 4px solid var(--orange);
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+.question-box.respondida {
+    border-left-color: var(--green);
+    background: rgba(34,197,94,0.04);
+}
+.q-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+.q-numero {
+    background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+    color: #fff; min-width: 32px; height: 32px;
+    border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-weight: 900; font-size: 0.9rem;
+    flex-shrink: 0; box-shadow: 0 0 10px rgba(249,115,22,0.4);
+}
+.question-box.respondida .q-numero {
+    background: linear-gradient(135deg, var(--green), #16a34a);
+    box-shadow: 0 0 10px rgba(34,197,94,0.5);
+}
+.q-title code {
+    background: rgba(255,255,255,0.08); padding: 1px 6px; border-radius: 4px;
+    font-size: 0.85em; color: #fbbf24; font-family: 'Courier New', monospace;
+}
+.options-list { display: flex; flex-direction: column; gap: 8px; }
+.opt-choice {
+    display: flex; align-items: center; gap: 12px;
+    padding: 11px 14px; background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 10px; cursor: pointer;
+    font-size: 0.9rem; transition: all 0.2s ease;
+    text-align: left; color: #cbd5e1;
+    font-family: inherit; line-height: 1.5;
+}
+.opt-choice:hover:not(.locked) {
+    border-color: var(--purple);
+    background: var(--surface-hover);
+    transform: translateX(3px);
+}
+.opt-choice .letra {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(168,85,247,0.15);
+    color: var(--purple); font-weight: 900; font-size: 0.85rem;
+    flex-shrink: 0; transition: all 0.2s ease;
+}
+.opt-choice:hover:not(.locked) .letra { background: var(--purple); color: #fff; }
+.opt-choice.selecionada {
+    background: linear-gradient(135deg, rgba(168,85,247,0.22), rgba(249,115,22,0.18)) !important;
+    border-color: var(--purple) !important;
+    color: #fff !important;
+    font-weight: 700;
+    box-shadow: 0 0 14px rgba(168,85,247,0.35);
+}
+.opt-choice.selecionada .letra {
+    background: var(--purple); color: #fff;
+    box-shadow: 0 0 10px rgba(168,85,247,0.7);
+}
+.opt-choice.correct { background: rgba(34, 197, 94, 0.2) !important; border-color: var(--green) !important; font-weight: bold; color: #86efac; }
+.opt-choice.wrong   { background: rgba(239, 68, 68, 0.2) !important; border-color: #ef4444 !important; color: #fca5a5; }
+.quiz-result {
+    display: none; background: rgba(168,85,247,0.1); border: 2px solid var(--purple);
+    border-radius: var(--radius); padding: 24px; text-align: center; margin-top: 20px;
+}
+.quiz-result.show { display: block; }
+.score-big { font-size: 3rem; font-weight: 900; color: var(--yellow); }
+.caldeirao-header {
+    background: linear-gradient(135deg, rgba(168,85,247,0.25), rgba(249,115,22,0.25));
+    border: 2px dashed var(--purple);
+    border-radius: var(--radius);
+    padding: 24px; text-align: center; margin-bottom: 22px;
+    animation: brilhoCaldeirao 4s ease-in-out infinite alternate;
+}
+@keyframes brilhoCaldeirao {
+    from { box-shadow: 0 0 20px rgba(168,85,247,0.3); }
+    to   { box-shadow: 0 0 40px rgba(249,115,22,0.5); }
+}
+.caldeirao-icon { font-size: 2.6rem; margin-bottom: 6px; animation: flutuar 2.5s ease-in-out infinite; }
+@keyframes flutuar { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-8px);} }
+.caldeirao-header h2 { color: var(--orange); font-size: 1.6rem; margin-bottom: 8px; text-shadow: 0 0 12px rgba(249,115,22,0.5); }
+.caldeirao-badges { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
+.instrucoes-avaliacao {
+    background: rgba(34, 197, 94, 0.08);
+    border-left: 4px solid var(--green);
+    padding: 14px 18px; border-radius: 12px; margin-bottom: 22px;
+    font-size: 0.9rem; color: #bbf7d0;
+}
+.instrucoes-avaliacao strong { color: #fff; }
+.instrucoes-avaliacao ul { margin: 8px 0 0 20px; }
+.instrucoes-avaliacao li { margin-bottom: 4px; }
+.aluno-box {
+    background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+    border-radius: 14px; padding: 18px; margin-bottom: 18px;
+    display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+}
+.aluno-box label { font-weight: 700; color: var(--orange); font-size: 0.9rem; }
+.aluno-box input {
+    flex: 1; min-width: 200px;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 10px 14px; color: var(--text-main); font-size: 0.9rem; font-family: inherit;
+}
+.aluno-box input:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px rgba(249,115,22,0.2); }
+.progresso-avaliacao {
+    background: rgba(168,85,247,0.08);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-bottom: 22px;
+}
+.progresso-info {
+    display: flex; justify-content: space-between;
+    font-size: 0.88rem; margin-bottom: 8px; color: var(--text-muted);
+}
+.progresso-info strong { color: var(--purple); }
+.progresso-barra { height: 10px; background: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden; }
+.progresso-fill {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, var(--purple), var(--orange));
+    border-radius: 10px;
+    transition: width 0.35s ease;
+    box-shadow: 0 0 12px rgba(168,85,247,0.5);
+}
+.acoes-avaliacao {
+    display: flex; gap: 12px; justify-content: center;
+    flex-wrap: wrap; margin-top: 26px;
+    padding-top: 20px; border-top: 1px dashed var(--border);
+}
+.area-impressao { display: none; }
+
+/* ============================================================
+   @media print — PDF LIMPO
+   ------------------------------------------------------------
+   A SOLUÇÃO:
+   1) Escondemos o .container INTEIRO com display:none (não basta
+      visibility:hidden — ele ainda ocupa espaço e gera páginas).
+   2) Mostramos o #area-impressao com position:absolute, para
+      começar exatamente no topo da página.
+   3) Forçamos fundo branco e texto preto em tudo.
+   ============================================================ */
+@media print {
+    /* 1) REMOVE TODO O CONTEÚDO DA TELA DO FLUXO DE IMPRESSÃO */
+    .container,
+    .tabs-nav,
+    .hero-halloween,
+    .tab-content,
+    .toast-copiado,
+    .quiz-result {
+        display: none !important;
+    }
+
+    /* 2) RESETA O BODY E HTML */
+    html, body {
+        background: #ffffff !important;
+        color: #000 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    /* 3) MOSTRA APENAS A ÁREA DE IMPRESSÃO */
+    #area-impressao {
+        display: block !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: #ffffff !important;
+        color: #000 !important;
+        font-family: 'Segoe UI', Arial, sans-serif !important;
+        font-size: 11pt !important;
+        line-height: 1.5 !important;
+    }
+
+    /* 4) RESETA CORES EM TODOS OS ELEMENTOS INTERNOS */
+    #area-impressao * {
+        color: #000 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    /* 5) CABEÇALHO */
+    #area-impressao .print-header {
+        border-bottom: 3px solid #a855f7 !important;
+        padding-bottom: 10px !important;
+        margin-bottom: 16px !important;
+        page-break-after: avoid !important;
+    }
+    #area-impressao .print-header h1 {
+        color: #6b21a8 !important;
+        font-size: 14pt !important;
+        margin: 0 0 8px 0 !important;
+    }
+    #area-impressao .print-header p {
+        font-size: 10pt !important;
+        margin: 2px 0 !important;
+    }
+
+    /* 6) CADA QUESTÃO */
+    #area-impressao .print-questao {
+        page-break-inside: avoid !important;
+        border-left: 4px solid #f97316 !important;
+        padding: 8px 12px !important;
+        margin: 0 0 12px 0 !important;
+        background: #ffffff !important;
+        border-radius: 4px !important;
+    }
+    #area-impressao .print-questao h4 {
+        color: #6b21a8 !important;
+        font-size: 11pt !important;
+        margin: 0 0 4px 0 !important;
+    }
+    #area-impressao .print-questao p {
+        font-size: 10pt !important;
+        margin: 0 0 6px 0 !important;
+    }
+    #area-impressao .print-questao .resp-aluno {
+        background: #fff8e6 !important;
+        border: 1px dashed #f97316 !important;
+        padding: 6px 10px !important;
+        border-radius: 4px !important;
+        font-size: 10pt !important;
+        margin-top: 4px !important;
+        white-space: pre-wrap !important;
+        page-break-inside: avoid !important;
+    }
+    #area-impressao .print-questao .resp-vazia {
+        color: #b91c1c !important;
+        font-style: italic !important;
+    }
+
+    /* 7) RODAPÉ */
+    #area-impressao .print-footer {
+        margin-top: 24px !important;
+        padding-top: 12px !important;
+        border-top: 2px dashed #a855f7 !important;
+        text-align: center !important;
+        font-size: 9pt !important;
+        color: #333 !important;
+        page-break-before: avoid !important;
+        page-break-inside: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    /* 8) FORMATO A4 */
+    @page {
+        size: A4 portrait;
+        margin: 15mm;
+    }
+
+    /* 9) GARANTIA: nada é impresso DEPOIS da área de impressão */
+    body > *:not(#area-impressao) {
+        display: none !important;
+    }
+    #area-impressao:after,
+    #area-impressao:before {
+        display: none !important;
+        content: none !important;
+    }
+    #area-impressao > *:last-child {
+        page-break-after: avoid !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+/* ============ LAB 1 — ABÓBORA VIVA ============ */
+.abobora-cena {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 14px; padding: 20px 0; position: relative;
+}
+.reflexo-chao {
+    position: absolute; bottom: 90px;
+    width: 260px; height: 40px; border-radius: 50%;
+    background: radial-gradient(ellipse at center,
+                rgba(249,115,22,0.55) 0%,
+                rgba(249,115,22,0.15) 40%,
+                transparent 75%);
+    filter: blur(8px); opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+}
+.reflexo-chao.ativo { opacity: 1; }
+.abobora-svg {
+    width: 280px; height: 300px; cursor: pointer;
+    filter: drop-shadow(0 12px 22px rgba(0,0,0,0.55));
+    transition: transform 0.25s ease, filter 0.4s ease;
+    user-select: none; position: relative; z-index: 2;
+}
+.abobora-svg:hover { transform: translateY(-4px) scale(1.02); }
+.abobora-svg:active { transform: translateY(0) scale(0.98); }
+.abobora-svg.pulsando { animation: pulsoAbobora 0.6s ease; }
+@keyframes pulsoAbobora {
+    0%   { transform: scale(1); }
+    25%  { transform: scale(1.06); filter: drop-shadow(0 0 30px rgba(249,115,22,0.85)); }
+    60%  { transform: scale(0.98); }
+    100% { transform: scale(1); }
+}
+.brilho-interior {
+    transform-origin: center;
+    animation: pulsarBrilho 1.4s ease-in-out infinite alternate;
+}
+.brilho-interior.apagado { opacity: 0 !important; animation: none; }
+@keyframes pulsarBrilho {
+    from { opacity: 0.55; transform: scale(0.96); }
+    to   { opacity: 1;    transform: scale(1.05); }
+}
+.olhos-brilho, .boca-brilho { animation: brilhoInterno 1.2s ease-in-out infinite alternate; }
+.olhos-brilho.apagado, .boca-brilho.apagado { opacity: 0 !important; animation: none; }
+@keyframes brilhoInterno { from { opacity: 0.55; } to { opacity: 0.95; } }
+.chama { transform-origin: center bottom; transition: opacity 0.4s ease; }
+.chama.apagada { opacity: 0; pointer-events: none; }
+.chama:not(.apagada) .chama-halo { animation: haloPulsar 1.6s ease-in-out infinite alternate; }
+.chama:not(.apagada) .chama-corpo { animation: tremularCorpo 0.9s ease-in-out infinite alternate; }
+.chama:not(.apagada) .chama-nucleo { animation: tremularNucleo 0.55s ease-in-out infinite alternate; }
+@keyframes haloPulsar {
+    0%   { opacity: 0.25; transform: scale(0.92); }
+    100% { opacity: 0.5;  transform: scale(1.1);  }
+}
+@keyframes tremularCorpo {
+    0%   { transform: scaleY(1)    skewX(-2deg); }
+    50%  { transform: scaleY(1.08) skewX(0deg);  }
+    100% { transform: scaleY(0.94) skewX(2.5deg); }
+}
+@keyframes tremularNucleo {
+    0%   { transform: scaleY(1)    translateX(-0.5px); }
+    100% { transform: scaleY(1.15) translateX(0.5px);  }
+}
+.fumaca { transition: opacity 0.5s ease; }
+.fumaca.apagado { opacity: 0; pointer-events: none; }
+.fumaca:not(.apagado) .fumaca-puff { animation: subirFumaca 3s ease-in-out infinite; }
+.fumaca:not(.apagado) .fumaca-puff:nth-child(2) { animation-delay: 0.6s; }
+.fumaca:not(.apagado) .fumaca-puff:nth-child(3) { animation-delay: 1.2s; }
+@keyframes subirFumaca {
+    0%   { transform: translateY(0)     scale(0.8); opacity: 0; }
+    20%  { opacity: 0.55; }
+    80%  { opacity: 0.25; }
+    100% { transform: translateY(-45px) scale(1.4); opacity: 0; }
+}
+.estado-abobora {
+    font-size: 1rem; font-weight: 800;
+    color: var(--orange);
+    background: rgba(249,115,22,0.1);
+    padding: 8px 18px; border-radius: 20px;
+    border: 1px solid var(--orange);
+    transition: all 0.3s ease;
+}
+.estado-abobora.acesa {
+    color: #fde68a; background: rgba(251,191,36,0.15);
+    border-color: #fbbf24; box-shadow: 0 0 20px rgba(251,191,36,0.4);
+}
+.ceu-fantasmas {
+    position: relative; height: 320px;
+    background: radial-gradient(circle at 50% 100%, #1a1030 0%, #05060b 80%);
+    border: 1px solid var(--border); border-radius: 12px;
+    overflow: hidden; margin-bottom: 12px;
+}
+.ceu-fantasmas::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 60% 20%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1.5px 1.5px at 80% 50%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1.5px 1.5px at 30% 70%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 90% 80%, rgba(255,255,255,0.4), transparent);
+    animation: piscarEstrelas 3s ease-in-out infinite alternate;
+}
+@keyframes piscarEstrelas { from { opacity: 0.4; } to { opacity: 1; } }
+.ceu-fantasmas .lua {
+    position: absolute; top: 18px; right: 24px;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #fef3c7, #facc15 60%, #b45309);
+    box-shadow: 0 0 30px rgba(250, 204, 21, 0.55);
+    animation: brilhoLua 3s ease-in-out infinite alternate;
+}
+@keyframes brilhoLua {
+    from { box-shadow: 0 0 20px rgba(250, 204, 21, 0.4); }
+    to   { box-shadow: 0 0 45px rgba(250, 204, 21, 0.8); }
+}
+.fantasma {
+    position: absolute; bottom: -80px;
+    font-size: 2.4rem; user-select: none; pointer-events: none;
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.55));
+    animation: subirFantasma 5s linear forwards;
+}
+@keyframes subirFantasma {
+    0%   { transform: translateY(0) scale(0.6); opacity: 0; }
+    10%  { opacity: 1; }
+    80%  { opacity: 1; }
+    100% { transform: translateY(-380px) scale(1.15) rotate(8deg); opacity: 0; }
+}
+.contador-fantasmas {
+    display: flex; gap: 10px; justify-content: center; align-items: center;
+    font-weight: 800; color: var(--purple); font-size: 0.95rem;
+}
+.contador-fantasmas span {
+    background: rgba(168,85,247,0.15); padding: 4px 12px; border-radius: 20px;
+    border: 1px solid var(--purple);
+}
+.canvas-wrap {
+    position: relative;
+    background: linear-gradient(to bottom, #0a0618 0%, #1a0b2e 50%, #2a0f1f 100%);
+    border: 1px solid var(--border); border-radius: 12px;
+    overflow: hidden; margin-bottom: 10px;
+}
+#canvas-morcego {
+    display: block; width: 100%; height: 340px;
+    image-rendering: pixelated;
+}
+.hud-morcego {
+    display: flex; justify-content: space-between; gap: 8px;
+    flex-wrap: wrap; align-items: center;
+    font-size: 0.85rem; font-weight: 800;
+    padding: 8px 4px;
+}
+.hud-morcego .hud-item {
+    background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+    padding: 5px 14px; border-radius: 20px;
+}
+.hud-morcego .hud-vida { color: #f87171; }
+.hud-morcego .hud-pontos { color: var(--yellow); }
+.hud-morcego .hud-vidas-icones { letter-spacing: 2px; }
+.hud-aviso-velocidade {
+    color: #fca5a5;
+    animation: pulsarAviso 1s ease-in-out infinite alternate;
+}
+@keyframes pulsarAviso {
+    from { opacity: 0.6; }
+    to   { opacity: 1; }
+}
+.controles-morcego {
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+    margin-top: 8px;
+}
+.instrucao-teclado {
+    font-size: 0.8rem; color: var(--text-muted); text-align: center; margin: 6px 0;
+}
+.instrucao-teclado kbd {
+    background: var(--surface); border: 1px solid var(--border);
+    border-bottom-width: 2px; border-radius: 5px;
+    padding: 1px 7px; font-family: monospace; font-size: 0.78rem;
+    color: var(--orange);
+}
+@media (max-width: 640px) {
+    .hero-halloween h1 { font-size: 1.6rem; }
+    .card { padding: 18px; }
+    .abobora-svg { width: 220px; height: 240px; }
+    .aluno-box { flex-direction: column; align-items: stretch; }
+    .aluno-box input { min-width: 100%; }
+    .q-title { font-size: 0.88rem; }
+    .opt-choice { font-size: 0.85rem; }
+    .instrucoes-onecompiler { font-size: 0.8rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header class="hero-halloween">
+    <h1>🎃 Halloween <span>Tech Lab</span></h1>
+    <p>Laboratórios interativos com animações de verdade: acenda a abóbora em SVG, invoque fantasmas no céu e pilote um morcego desviando de obstáculos!</p>
+    <div class="badges-top">
+        <span class="badge">📜 Histórias &amp; Lendas</span>
+        <span class="badge">🌍 Celebrações no Mundo</span>
+        <span class="badge">💻 3 Labs Animados</span>
+        <span class="badge">🔮 Avaliação com PDF</span>
+    </div>
+</header>
+
+<nav class="tabs-nav">
+    <button class="tab-btn active" onclick="trocarAbaPrincipal('aba-origens', this)">📜 1. Origens &amp; Lendas</button>
+    <button class="tab-btn" onclick="trocarAbaPrincipal('aba-mundo', this)">🌍 2. Pelo Mundo</button>
+    <button class="tab-btn" onclick="trocarAbaPrincipal('aba-codigos', this)">💻 3. Labs Animados</button>
+    <button class="tab-btn" onclick="trocarAbaPrincipal('aba-quiz', this)">🧙 4. Quiz Cultural</button>
+    <button class="tab-btn" onclick="trocarAbaPrincipal('aba-avaliacao', this)">🔮 5. Avaliação (PDF)</button>
+</nav>
+
+<!-- ================= ABA 1 ================= -->
+<div id="aba-origens" class="tab-content active">
+    <section class="card">
+        <h2>🕯️ De Onde Veio o Halloween?</h2>
+        <p>O Halloween tem mais de <strong>2.000 anos de história</strong> e não começou como uma festa de compras ou cinema, mas como um ritual milenar ligado à natureza e às estações do ano.</p>
+
+        <div class="callout orange">
+            🌾 <strong>O Festival Celta de Samhain (Pronuncia-se "Sow-in"):</strong><br>
+            Os povos celtas da antiga Irlanda e Reino Unido comemoravam o fim da colheita e o início do rigoroso inverno na virada de 31 de outubro. Acreditava-se que, nessa noite, o véu entre o mundo dos vivos e dos mortos se abria. As pessoas acendiam fogueiras sagradas e usavam peles e máscaras para se protegerem e enganarem espíritos errantes.
+        </div>
+
+        <div class="grid-cards">
+            <div class="item-card">
+                <span class="icone">🎃</span>
+                <h4>A Lenda de Jack O'Lantern</h4>
+                <p>O folclore irlandês conta a história de Stingy Jack, um ferreiro tão esperto que enganou o Diabo várias vezes. Sem poder entrar no céu nem no inferno após partir, ganhou uma brasa acesa que colocou dentro de um <strong>nabo entalhado</strong>. Ao chegarem à América, os imigrantes trocaram os nabos por <strong>abóboras</strong>.</p>
+            </div>
+            <div class="item-card">
+                <span class="icone">🍬</span>
+                <h4>Doces ou Travessuras?</h4>
+                <p>Originou-se do costume medieval do <em>"souling"</em>: cidadãos batiam de porta em porta oferecendo rezas pelos antepassados em troca dos <em>soul cakes</em>. Se uma casa recusasse hospitalidade, acreditava-se que perderia a bênção na colheita.</p>
+            </div>
+            <div class="item-card">
+                <span class="icone">🎭</span>
+                <h4>Por que nos Fantasiamos?</h4>
+                <p>A fantasia nasceu como uma <strong>camuflagem mágica</strong>: se alguém precisasse sair na escuridão da noite de Samhain, vestia-se como criatura mística para que os espíritos pensassem que a pessoa também era um ser do além.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ================= ABA 2 ================= -->
+<div id="aba-mundo" class="tab-content">
+    <section class="card">
+        <h2>🌍 Tradições de Halloween pelo Planeta</h2>
+        <div class="grid-cards">
+            <div class="item-card">
+                <span class="icone">🇮🇪</span>
+                <h4>Irlanda (O Berço)</h4>
+                <p>Fogueiras rurais e a tradicional torta <em>Barmbrack</em>, que esconde anéis e moedas para prever a sorte de quem encontrar o pedaço.</p>
+            </div>
+            <div class="item-card">
+                <span class="icone">🇺🇸</span>
+                <h4>Estados Unidos &amp; Canadá</h4>
+                <p>Decorações cinematográficas, parques temáticos de abóboras e multidões de crianças fantasiadas nas ruas ao entardecer.</p>
+            </div>
+            <div class="item-card">
+                <span class="icone">🇲🇽</span>
+                <h4>México (Día de los Muertos)</h4>
+                <p>Comemorado em 1 e 2 de novembro com alegria, altares de flores alaranjadas (<em>cempasúchil</em>), caveiras de açúcar e banquetes.</p>
+            </div>
+            <div class="item-card">
+                <span class="icone">🇧🇷</span>
+                <h4>Brasil: Dia do Saci</h4>
+                <p>Comemorado oficialmente em 31 de outubro (Lei Federal nº 11.669) para valorizar o Saci-Pererê, a Cuca, o Curupira e o Boitatá!</p>
+            </div>
+        </div>
+        <div class="callout purple">
+            🏰 <strong>Curiosidade Europeia:</strong> Na Romênia, viajantes visitam a região enevoada da Transilvânia e o Castelo de Bran, lendária residência atribuída ao mito do Conde Drácula.
+        </div>
+    </section>
+</div>
+
+<!-- ================= ABA 3 — LABS ================= -->
+<div id="aba-codigos" class="tab-content">
+    <section class="card">
+        <h2>💻 Caldeirão de Códigos — Laboratórios Animados</h2>
+        <p>Três projetos visuais com <strong>SVG animado, criação dinâmica de DOM e Canvas com colisão</strong>. Teste na própria tela ou copie o código e cole no OneCompiler!</p>
+
+        <!-- ============ LAB 1 ============ -->
+        <div class="lab-card" id="card-lab1">
+            <div class="lab-header">
+                <div class="lab-title">🎃 Lab 1: A Abóbora Viva (SVG Animado + Filtros)</div>
+                <button class="btn-onecompiler" onclick="abrirOneCompilerVazio()">🚀 Abrir OneCompiler (vazio)</button>
+            </div>
+
+            <div class="instrucoes-onecompiler">
+                <strong>💡 Como testar este código no OneCompiler:</strong>
+                <ol>
+                    <li>Copie o código abaixo (aba <strong>📦 Arquivo Único</strong>) clicando em <strong>📋 Copiar</strong>.</li>
+                    <li>Clique no botão <strong>🚀 Abrir OneCompiler (vazio)</strong> — abre uma aba nova.</li>
+                    <li>No editor do OneCompiler, apague o que estiver lá e cole com <kbd>Ctrl</kbd>+<kbd>V</kbd>.</li>
+                    <li>Clique em <strong>Run</strong> e clique na abóbora para acender a chama!</li>
+                </ol>
+            </div>
+
+            <div class="lab-preview" style="background: radial-gradient(circle at 50% 60%, #2a1245 0%, #05060b 70%);">
+                <div class="abobora-cena">
+                    <div class="reflexo-chao" id="reflexo-chao"></div>
+
+                    <svg class="abobora-svg" viewBox="0 0 240 260" id="abobora-svg"
+                         onclick="alternarChamaAbobora()" role="button"
+                         aria-label="Clique para acender ou apagar a abóbora">
+
+                        <defs>
+                            <radialGradient id="grad-abobora" cx="45%" cy="35%" r="70%">
+                                <stop offset="0%"  stop-color="#fb923c"/>
+                                <stop offset="55%" stop-color="#f97316"/>
+                                <stop offset="100%" stop-color="#7c2d12"/>
+                            </radialGradient>
+                            <radialGradient id="grad-gomo" cx="40%" cy="35%" r="75%">
+                                <stop offset="0%"  stop-color="#c2410c"/>
+                                <stop offset="100%" stop-color="#431407"/>
+                            </radialGradient>
+                            <radialGradient id="grad-brilho" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%"  stop-color="#fef3c7" stop-opacity="1"/>
+                                <stop offset="40%" stop-color="#fbbf24" stop-opacity="0.85"/>
+                                <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
+                            </radialGradient>
+                            <radialGradient id="grad-chama" cx="50%" cy="65%" r="60%">
+                                <stop offset="0%"  stop-color="#fff7d6"/>
+                                <stop offset="35%" stop-color="#fbbf24"/>
+                                <stop offset="70%" stop-color="#f97316"/>
+                                <stop offset="100%" stop-color="#b91c1c" stop-opacity="0.2"/>
+                            </radialGradient>
+                            <filter id="filtro-brilho" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="3" result="blur"/>
+                                <feMerge>
+                                    <feMergeNode in="blur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                            <filter id="filtro-glow-laranja" x="-80%" y="-80%" width="260%" height="260%">
+                                <feGaussianBlur stdDeviation="6" result="blur"/>
+                                <feMerge>
+                                    <feMergeNode in="blur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                            <filter id="filtro-fumaca" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="4"/>
+                            </filter>
+                        </defs>
+
+                        <ellipse cx="120" cy="238" rx="82" ry="9" fill="rgba(0,0,0,0.55)"/>
+
+                        <ellipse cx="68"  cy="140" rx="42" ry="68" fill="url(#grad-gomo)"/>
+                        <ellipse cx="172" cy="140" rx="42" ry="68" fill="url(#grad-gomo)"/>
+                        <ellipse cx="88"  cy="135" rx="40" ry="66" fill="#c2410c" opacity="0.85"/>
+                        <ellipse cx="152" cy="135" rx="40" ry="66" fill="#c2410c" opacity="0.85"/>
+
+                        <ellipse cx="120" cy="140" rx="68" ry="78" fill="url(#grad-abobora)"/>
+
+                        <path d="M120 62 Q100 140 120 218" stroke="#7c2d12" stroke-width="2" fill="none" opacity="0.55"/>
+                        <path d="M120 62 Q140 140 120 218" stroke="#7c2d12" stroke-width="2" fill="none" opacity="0.55"/>
+                        <path d="M95 70 Q70 140 95 210" stroke="#7c2d12" stroke-width="1.5" fill="none" opacity="0.4"/>
+                        <path d="M145 70 Q170 140 145 210" stroke="#7c2d12" stroke-width="1.5" fill="none" opacity="0.4"/>
+
+                        <ellipse cx="95" cy="105" rx="26" ry="34" fill="#fdba74" opacity="0.35"/>
+
+                        <ellipse id="brilho-interior" class="brilho-interior apagado"
+                                 cx="120" cy="150" rx="58" ry="62"
+                                 fill="url(#grad-brilho)" opacity="0"/>
+
+                        <path d="M82 118 L104 96 L112 130 Z" fill="#0a0605"/>
+                        <path d="M158 118 L136 96 L128 130 Z" fill="#0a0605"/>
+                        <path d="M120 138 L108 154 L132 154 Z" fill="#0a0605"/>
+                        <path d="M78 172 Q92 158 108 172 Q120 158 132 172 Q148 158 162 172 Q152 200 120 202 Q88 200 78 172 Z" fill="#0a0605"/>
+
+                        <g id="olhos-brilho" class="olhos-brilho apagado" filter="url(#filtro-brilho)">
+                            <path d="M82 118 L104 96 L112 130 Z" fill="#fde68a" opacity="0.85"/>
+                            <path d="M158 118 L136 96 L128 130 Z" fill="#fde68a" opacity="0.85"/>
+                        </g>
+
+                        <path id="boca-brilho" class="boca-brilho apagado" filter="url(#filtro-brilho)"
+                              d="M78 172 Q92 158 108 172 Q120 158 132 172 Q148 158 162 172 Q152 200 120 202 Q88 200 78 172 Z"
+                              fill="#fb923c" opacity="0.75"/>
+
+                        <g id="fumaca" class="fumaca apagado" filter="url(#filtro-fumaca)">
+                            <ellipse class="fumaca-puff" cx="120" cy="80" rx="10" ry="6" fill="#94a3b8" opacity="0.5"/>
+                            <ellipse class="fumaca-puff" cx="126" cy="60" rx="14" ry="8" fill="#94a3b8" opacity="0.35"/>
+                            <ellipse class="fumaca-puff" cx="115" cy="40" rx="18" ry="10" fill="#94a3b8" opacity="0.25"/>
+                        </g>
+
+                        <g id="chama-abobora" class="chama apagada"
+                           transform="translate(120 155)" filter="url(#filtro-glow-laranja)">
+                            <ellipse class="chama-halo" cx="0" cy="0" rx="22" ry="30" fill="#f97316" opacity="0.35"/>
+                            <path class="chama-corpo"
+                                  d="M0 -28 Q-9 -18 -8 -4 Q-7 8 0 12 Q7 8 8 -4 Q9 -18 0 -28 Z"
+                                  fill="url(#grad-chama)"/>
+                            <ellipse class="chama-nucleo" cx="0" cy="2" rx="4" ry="8" fill="#fff7d6" opacity="0.95"/>
+                            <circle class="faisca f1" cx="0" cy="-10" r="1.6" fill="#fde68a">
+                                <animate attributeName="cy" from="-10" to="-60" dur="1.8s" repeatCount="indefinite"/>
+                                <animate attributeName="cx" from="0" to="-14" dur="1.8s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" from="1" to="0" dur="1.8s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle class="faisca f2" cx="0" cy="-10" r="1.4" fill="#fbbf24">
+                                <animate attributeName="cy" from="-10" to="-70" dur="2.2s" begin="0.4s" repeatCount="indefinite"/>
+                                <animate attributeName="cx" from="0" to="12" dur="2.2s" begin="0.4s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" from="1" to="0" dur="2.2s" begin="0.4s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle class="faisca f3" cx="0" cy="-10" r="1.2" fill="#fff7d6">
+                                <animate attributeName="cy" from="-10" to="-55" dur="1.6s" begin="0.8s" repeatCount="indefinite"/>
+                                <animate attributeName="cx" from="0" to="6" dur="1.6s" begin="0.8s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" from="1" to="0" dur="1.6s" begin="0.8s" repeatCount="indefinite"/>
+                            </circle>
+                        </g>
+
+                        <path d="M110 68 Q120 40 142 38 Q134 58 128 70 Z" fill="#166534"/>
+                        <path d="M120 66 Q106 46 90 52 Q102 66 114 72 Z" fill="#16a34a"/>
+                        <path d="M118 70 Q122 58 128 60 Q126 68 122 74 Z" fill="#22c55e" opacity="0.7"/>
+                    </svg>
+
+                    <div class="estado-abobora" id="estado-abobora">
+                        🌑 Abóbora apagada — clique nela para acender!
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-nav">
+                <button class="code-tab-btn active" onclick="trocarAbaCodigo('lab1', 'html', this)">📄 HTML</button>
+                <button class="code-tab-btn" onclick="trocarAbaCodigo('lab1', 'css', this)">🎨 CSS</button>
+                <button class="code-tab-btn" onclick="trocarAbaCodigo('lab1', 'js', this)">⚙️ JS</button>
+                <button class="code-tab-btn" onclick="trocarAbaCodigo('lab1', 'tudo', this)">📦 Arquivo Único</button>
+            </div>
+
+            <div class="code-pane-box">
+                <button class="btn-copy-code" onclick="copiarTrechoLab('lab1', this)">📋 Copiar</button>
+                <div class="code-pane active" id="lab1-pane-html"><pre></pre></div>
+                <div class="code-pane" id="lab1-pane-css"><pre></pre></div>
+                <div class="code-pane" id="lab1-pane-js"><pre></pre></div>
+                <div class="code-pane" id="lab1-pane-tudo"><pre></pre></div>
+            </div>
+        </div>
+
+        <!-- ============ LAB 2 ============ -->
+        <div class="lab-card" id="card-lab2">
+            <div class="lab-header">
+                <div class="lab-title">👻 Lab 2: Invasão de Fantasmas (Arrays + DOM Dinâmico)</div>
+                <button class="btn-onecompiler" onclick="abrirOneCompilerVazio()">🚀 Abrir OneCompiler (vazio)</button>
+            </div>
+
+            <div class="instrucoes-onecompiler">
+                <strong>💡 Como testar este código no OneCompiler:</strong>
+                <ol>
+                    <li>Copie o código abaixo (aba <strong>📦 Arquivo Único</strong>) clicando em <strong>📋 Copiar</strong>.</li>
+                    <li>Clique no botão <strong>🚀 Abrir OneCompiler (vazio)</strong> — abre uma aba nova.</li>
+                    <li>No editor do OneCompiler, apague o que estiver lá e cole com <kbd>Ctrl</kbd>+<kbd>V</kbd>.</li>
+                    <li>Clique em <strong>Run</strong> e depois em <strong>✨ Invocar Fantasma</strong> várias vezes!</li>
+                </ol>
+            </div>
+
+            <div class="lab-preview" style="padding:0; background:transparent; border:none;">
+                <div class="ceu-fantasmas" id="ceu-fantasmas">
+                    <div class="lua"></div>
+                </div>
+                <div class="contador-fantasmas" style="margin-top:12px;">
+                    👻 Fantasmas invocados: <span id="contador-fantasmas">0</span>
+                </div>
+                <div style="margin-top:8px;">
+                    <button class="btn-widget purple" onclick="invocarFantasma()">✨ Invocar Fantasma</button>
+                    <button class="btn-widget" onclick="invocarChuvaFantasmas()">🌪️ Chuva de Fantasmas (x5)</button>
+                    <button class="btn-widget red" onclick="limparFantasmas()">🧹 Limpar Céu</button>
+                </div>
+            </div>
+
+            <div class="code-nav">
+                <button class="code-tab-btn active" onclick="trocarAbaCodigo('lab2', 'html', this)">📄 HTML</button>
+                <button class="code-tab-btn" onclick="trocarAbaCodigo('lab2', 'css', this)">🎨 CSS</button>
+                <button class="code-tab-btn" onclick="trocarAbaCodigo('lab2', 'js', this)">⚙️ JS</button>
+                <button class="code-tab-btn" onclick="trocarAbaCodigo('lab2', 'tudo', this)">📦 Arquivo Único</button>
+            </div>
+
+            <div class="code-pane-box">
+                <button class="btn-copy-code" onclick="copiarTrechoLab('lab2', this)">📋 Copiar</button>
+                <div class="code-pane active" id="lab2-pane-html"><pre></pre></div>
+                <div class="code-pane" id="lab2-pane-css"><pre></pre></div>
+                <div class="code-pane" id="lab2-pane-js"><pre></pre></div>
+                <div class="code-pane" id="lab2-pane-tudo"><pre></pre></div>
+            </div>
+        </div>
+
+        <!-- ============ LAB 3 ============ -->
+        <div class="lab-card" id="card-lab3">
+            <div class="lab-header">
+                <div class="lab-title">🦇 Lab 3: Voo do Morcego (Canvas + Colisão + Velocidade Progressiva)</div>
+                <button class="btn-onecompiler" onclick="abrirOneCompilerVazio()">🚀 Abrir OneCompiler (vazio)</button>
+            </div>
+
+            <div class="instrucoes-onecompiler">
+                <strong>💡 Como testar este código no OneCompiler:</strong>
+                <ol>
+                    <li>Copie o código abaixo (aba <strong>📦 Arquivo Único</strong>) clicando em <strong>📋 Copiar</strong>.</li>
+                    <li>Clique no botão <strong>🚀 Abrir OneCompiler (vazio)</strong> — abre uma aba nova.</li>
+                    <li>No editor do OneCompiler, apague o que estiver lá e cole com <kbd>Ctrl</kbd>+<kbd>V</kbd>.</li>
+                    <li>Clique em <strong>Run</strong> e use <kbd>↑</kbd>/<kbd>↓</kbd> para pilotar o morcego!</li>
+                </ol>
+            </div>
+
+            <div class="lab-preview" style="padding:0; background:transparent; border:none;">
+                <div class="canvas-wrap">
+                    <canvas id="canvas-morcego" width="960" height="340"></canvas>
+                </div>
+                <div class="hud-morcego">
+                    <div class="hud-item hud-pontos">⭐ Pontos: <span id="hud-pontos">0</span></div>
+                    <div class="hud-item hud-vida">❤️ Vidas: <span class="hud-vidas-icones" id="hud-vidas">♥♥♥</span></div>
+                    <div class="hud-item">🏆 Recorde: <span id="hud-recorde">0</span></div>
+                    <div class="hud-item hud-aviso-velocidade" id="hud-velocidade" style="display:none;">⚡ Velocidade x1.0</div>
+                </div>
+                <div class="instrucao-teclado">
+                    Use <kbd>↑</kbd> / <kbd>↓</kbd> (ou <kbd>W</kbd>/<kbd>S</kbd>) para voar. Desvie dos <strong>túmulos 🪦</strong> e colete <strong>doces 🍬</strong>!<br>
+                    <strong>⚡ A cada 100 pontos, os obstáculos ficam mais rápidos!</strong>
+                </div>
+                <div class="controles-morcego">
+                    <button class="btn-widget green" onclick="iniciarJogoMorcego()">▶️ Iniciar Jogo</button>
+                    <button class="btn-widget" onclick="subirMorcego()">⬆️ Subir</button>
+                    <button class="btn-widget" onclick="descerMorcego()">⬇️ Descer</button>
+                    <button class="btn-widget red" onclick="pararJogoMorcego()">⏹️ Parar</button>
+                </div>
+            </div>
+
+            <div class="code-nav">
+                <button class="code-tab-btn active" onclick="trocarAbaCodigo('lab3', 'html', this)">📄 HTML</button>
+                <button class="code-tab-btn" onclick="trocarAbaCodigo('lab3', 'css', this)">🎨 CSS</button>
+                <button class="code-tab-btn" onclick="trocarAbaCodigo('lab3', 'js', this)">⚙️ JS</button>
+                <button class="code-tab-btn" onclick="trocarAbaCodigo('lab3', 'tudo', this)">📦 Arquivo Único</button>
+            </div>
+
+            <div class="code-pane-box">
+                <button class="btn-copy-code" onclick="copiarTrechoLab('lab3', this)">📋 Copiar</button>
+                <div class="code-pane active" id="lab3-pane-html"><pre></pre></div>
+                <div class="code-pane" id="lab3-pane-css"><pre></pre></div>
+                <div class="code-pane" id="lab3-pane-js"><pre></pre></div>
+                <div class="code-pane" id="lab3-pane-tudo"><pre></pre></div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ================= ABA 4 — QUIZ ================= -->
+<div id="aba-quiz" class="tab-content">
+    <section class="card">
+        <h2>🧙 Quiz dos Mistérios do Halloween</h2>
+        <p>Teste seus conhecimentos com 5 perguntas culturais e de lógica simples.</p>
+
+        <div class="question-box" id="q1">
+            <div class="q-title">1. Qual festival ancestral de colheita deu origem ao Halloween moderno?</div>
+            <div class="options-list">
+                <button class="opt-choice" onclick="responderQuiz('q1', this, true)">Festival Celta de Samhain</button>
+                <button class="opt-choice" onclick="responderQuiz('q1', this, false)">Festival Romano das Lanternas</button>
+                <button class="opt-choice" onclick="responderQuiz('q1', this, false)">Festa da Primavera Nórdica</button>
+            </div>
+        </div>
+
+        <div class="question-box" id="q2">
+            <div class="q-title">2. Antes das abóboras se tornarem populares na América, qual legume era entalhado na Irlanda?</div>
+            <div class="options-list">
+                <button class="opt-choice" onclick="responderQuiz('q2', this, false)">Batata-doce</button>
+                <button class="opt-choice" onclick="responderQuiz('q2', this, true)">Nabo</button>
+                <button class="opt-choice" onclick="responderQuiz('q2', this, false)">Cenoura</button>
+            </div>
+        </div>
+
+        <div class="question-box" id="q3">
+            <div class="q-title">3. O que também é celebrado oficialmente no Brasil em 31 de outubro?</div>
+            <div class="options-list">
+                <button class="opt-choice" onclick="responderQuiz('q3', this, true)">O Dia do Saci (valorizando o folclore nacional)</button>
+                <button class="opt-choice" onclick="responderQuiz('q3', this, false)">O Dia das Cavernas Encantadas</button>
+                <button class="opt-choice" onclick="responderQuiz('q3', this, false)">O Dia do Boto Cor-de-Rosa</button>
+            </div>
+        </div>
+
+        <div class="question-box" id="q4">
+            <div class="q-title">4. No México, a celebração do "Día de los Muertos" se destaca por:</div>
+            <div class="options-list">
+                <button class="opt-choice" onclick="responderQuiz('q4', this, false)">Ser um momento fúnebre de silêncio e medo</button>
+                <button class="opt-choice" onclick="responderQuiz('q4', this, true)">Ser uma festa colorida, alegre e afetuosa em memória dos entes queridos</button>
+                <button class="opt-choice" onclick="responderQuiz('q4', this, false)">Competições de sustos em cemitérios</button>
+            </div>
+        </div>
+
+        <div class="question-box" id="q5">
+            <div class="q-title">5. Se tivermos <code>let doces = 10;</code> e executarmos <code>doces = doces + 5;</code>, quantos doces teremos?</div>
+            <div class="options-list">
+                <button class="opt-choice" onclick="responderQuiz('q5', this, true)">15 doces</button>
+                <button class="opt-choice" onclick="responderQuiz('q5', this, false)">5 doces</button>
+                <button class="opt-choice" onclick="responderQuiz('q5', this, false)">105 doces</button>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <button class="btn-widget" style="padding:14px 30px; font-size:1rem;" onclick="calcularResultadoQuiz()">🏆 Calcular Meu Nível Mágico</button>
+        </div>
+
+        <div class="quiz-result" id="quiz-resultado-box">
+            <h3>Seu Desempenho no Quiz:</h3>
+            <div class="score-big" id="score-display">0 / 5</div>
+            <p id="feedback-magico" style="font-weight:bold; font-size:1.1rem; margin-top:8px;"></p>
+        </div>
+    </section>
+</div>
+
+<!-- ================= ABA 5 — AVALIAÇÃO ================= -->
+<div id="aba-avaliacao" class="tab-content">
+    <section class="card">
+
+        <div class="caldeirao-header">
+            <div class="caldeirao-icon">🧙‍♂️🍯</div>
+            <h2>🔮 Caldeirão de Códigos — Avaliação Objetiva</h2>
+            <p>10 questões sobre os códigos dos <strong>Labs 1, 2 e 3</strong>. Cada questão tem <strong>5 alternativas</strong> (A a E).</p>
+            <div class="caldeirao-badges">
+                <span class="badge">📝 10 Questões</span>
+                <span class="badge">🔤 5 Alternativas cada</span>
+                <span class="badge">🖨️ Exportar PDF</span>
+            </div>
+        </div>
+
+        <div class="instrucoes-avaliacao">
+            <strong>📚 Instruções para o aluno:</strong>
+            <ul>
+                <li>Preencha seu <strong>nome</strong> e <strong>turma</strong> antes de responder.</li>
+                <li>Cada questão tem <strong>5 alternativas</strong> (A, B, C, D, E). Clique na que julgar correta.</li>
+                <li>É permitido <strong>trocar de alternativa</strong> antes de gerar o PDF — basta clicar em outra.</li>
+                <li>As questões foram feitas com base no código que você viu nas abas dos <strong>Labs 1, 2 e 3</strong>.</li>
+                <li>Ao terminar, clique em <strong>🖨️ Imprimir em PDF para Envio</strong>.</li>
+                <li>Na janela de impressão, escolha o destino <strong>"Salvar como PDF"</strong>.</li>
+                <li>As respostas <strong>não são corrigidas na tela</strong>: apenas o professor verá o resultado.</li>
+            </ul>
+        </div>
+
+        <div class="aluno-box">
+            <label for="aluno-nome">🧛 Nome do Aluno(a):</label>
+            <input type="text" id="aluno-nome" placeholder="Digite seu nome completo" required>
+            <label for="aluno-turma">🏫 Turma:</label>
+            <input type="text" id="aluno-turma" placeholder="Ex: 1º Ano B - Web Dev">
+        </div>
+
+        <div class="progresso-avaliacao">
+            <div class="progresso-info">
+                <span>📊 Progresso: <strong id="progresso-texto">0 de 10</strong> respondidas</span>
+                <span id="progresso-porcento">0%</span>
+            </div>
+            <div class="progresso-barra">
+                <div class="progresso-fill" id="progresso-fill"></div>
+            </div>
+        </div>
+
+        <div id="form-avaliacao">
+
+            <div class="question-box" id="aq1" data-correta="B">
+                <div class="q-title">
+                    <span class="q-numero">1</span>
+                    🎃 No Lab 1, o JavaScript usa <code>document.getElementById("abobora-svg")</code> para quê?
+                </div>
+                <div class="options-list">
+                    <button type="button" class="opt-choice" data-letra="A"><span class="letra">A</span> Criar uma nova abóbora na tela</button>
+                    <button type="button" class="opt-choice" data-letra="B"><span class="letra">B</span> Localizar o elemento SVG da abóbora pelo seu <code>id</code> para manipulá-lo</button>
+                    <button type="button" class="opt-choice" data-letra="C"><span class="letra">C</span> Apagar todos os elementos SVG da página</button>
+                    <button type="button" class="opt-choice" data-letra="D"><span class="letra">D</span> Mudar a cor de fundo do site para laranja</button>
+                    <button type="button" class="opt-choice" data-letra="E"><span class="letra">E</span> Recarregar a página automaticamente</button>
+                </div>
+            </div>
+
+            <div class="question-box" id="aq2" data-correta="C">
+                <div class="q-title">
+                    <span class="q-numero">2</span>
+                    🔥 No Lab 1, ao clicar na abóbora, o JS executa <code>chama.classList.toggle("apagada")</code>. O que isso faz?
+                </div>
+                <div class="options-list">
+                    <button type="button" class="opt-choice" data-letra="A"><span class="letra">A</span> Sempre adiciona a classe <code>apagada</code>, nunca remove</button>
+                    <button type="button" class="opt-choice" data-letra="B"><span class="letra">B</span> Apaga o código-fonte do arquivo</button>
+                    <button type="button" class="opt-choice" data-letra="C"><span class="letra">C</span> Se a classe <code>apagada</code> existir, remove; se não existir, adiciona</button>
+                    <button type="button" class="opt-choice" data-letra="D"><span class="letra">D</span> Cria uma nova classe chamada <code>apagada</code> no CSS</button>
+                    <button type="button" class="opt-choice" data-letra="E"><span class="letra">E</span> Reinicia o navegador do usuário</button>
+                </div>
+            </div>
+
+            <div class="question-box" id="aq3" data-correta="A">
+                <div class="q-title">
+                    <span class="q-numero">3</span>
+                    🎨 No CSS do Lab 1, a regra <code>.chama.apagada { opacity: 0; }</code> faz o quê?
+                </div>
+                <div class="options-list">
+                    <button type="button" class="opt-choice" data-letra="A"><span class="letra">A</span> Deixa a chama invisível quando ela tem a classe <code>apagada</code></button>
+                    <button type="button" class="opt-choice" data-letra="B"><span class="letra">B</span> Aumenta o tamanho da chama em 0 pixels</button>
+                    <button type="button" class="opt-choice" data-letra="C"><span class="letra">C</span> Apaga a chama do arquivo HTML para sempre</button>
+                    <button type="button" class="opt-choice" data-letra="D"><span class="letra">D</span> Muda a cor da chama para preto</button>
+                    <button type="button" class="opt-choice" data-letra="E"><span class="letra">E</span> Bloqueia cliques na chama permanentemente</button>
+                </div>
+            </div>
+
+            <div class="question-box" id="aq4" data-correta="D">
+                <div class="q-title">
+                    <span class="q-numero">4</span>
+                    ✨ No SVG do Lab 1, como as <strong>faíscas</strong> que sobem da chama são animadas sem JavaScript?
+                </div>
+                <div class="options-list">
+                    <button type="button" class="opt-choice" data-letra="A"><span class="letra">A</span> Com <code>setInterval()</code> dentro do SVG</button>
+                    <button type="button" class="opt-choice" data-letra="B"><span class="letra">B</span> Com <code>requestAnimationFrame()</code> rodando em loop</button>
+                    <button type="button" class="opt-choice" data-letra="C"><span class="letra">C</span> Com uma imagem GIF externa colada na chama</button>
+                    <button type="button" class="opt-choice" data-letra="D"><span class="letra">D</span> Com a tag SVG <code>&lt;animate&gt;</code> dentro dos círculos das faíscas</button>
+                    <button type="button" class="opt-choice" data-letra="E"><span class="letra">E</span> Não é possível: SVG sempre precisa de JS para animar</button>
+                </div>
+            </div>
+
+            <div class="question-box" id="aq5" data-correta="B">
+                <div class="q-title">
+                    <span class="q-numero">5</span>
+                    👻 No Lab 2, qual par de comandos o JS usa para <strong>criar</strong> um fantasma e <strong>inseri-lo</strong> no céu?
+                </div>
+                <div class="options-list">
+                    <button type="button" class="opt-choice" data-letra="A"><span class="letra">A</span> <code>document.write()</code> e <code>innerHTML =</code></button>
+                    <button type="button" class="opt-choice" data-letra="B"><span class="letra">B</span> <code>document.createElement()</code> e <code>appendChild()</code></button>
+                    <button type="button" class="opt-choice" data-letra="C"><span class="letra">C</span> <code>document.newElement()</code> e <code>insert()</code></button>
+                    <button type="button" class="opt-choice" data-letra="D"><span class="letra">D</span> <code>document.query()</code> e <code>push()</code></button>
+                    <button type="button" class="opt-choice" data-letra="E"><span class="letra">E</span> <code>document.cloneNode()</code> e <code>append()</code></button>
+                </div>
+            </div>
+
+            <div class="question-box" id="aq6" data-correta="E">
+                <div class="q-title">
+                    <span class="q-numero">6</span>
+                    🧹 No Lab 2, por que usamos <code>setTimeout(function(){ fantasma.remove(); }, 5000)</code>?
+                </div>
+                <div class="options-list">
+                    <button type="button" class="opt-choice" data-letra="A"><span class="letra">A</span> Para criar 5 fantasmas de uma só vez</button>
+                    <button type="button" class="opt-choice" data-letra="B"><span class="letra">B</span> Para congelar a animação CSS do fantasma por 5 segundos</button>
+                    <button type="button" class="opt-choice" data-letra="C"><span class="letra">C</span> Para tocar um som de fantasma após 5 segundos</button>
+                    <button type="button" class="opt-choice" data-letra="D"><span class="letra">D</span> Para mudar a cor do fantasma após 5 segundos</button>
+                    <button type="button" class="opt-choice" data-letra="E"><span class="letra">E</span> Para remover o fantasma do DOM após 5s e evitar acúmulo de elementos</button>
+                </div>
+            </div>
+
+            <div class="question-box" id="aq7" data-correta="A">
+                <div class="q-title">
+                    <span class="q-numero">7</span>
+                    🦇 No Lab 3, qual API do HTML5 o jogo usa para desenhar o morcego, os túmulos e o céu?
+                </div>
+                <div class="options-list">
+                    <button type="button" class="opt-choice" data-letra="A"><span class="letra">A</span> Canvas 2D, acessada via <code>canvas.getContext("2d")</code></button>
+                    <button type="button" class="opt-choice" data-letra="B"><span class="letra">B</span> WebGL puro, via <code>getContext("webgl")</code></button>
+                    <button type="button" class="opt-choice" data-letra="C"><span class="letra">C</span> SVG dinâmico com <code>createElementNS()</code></button>
+                    <button type="button" class="opt-choice" data-letra="D"><span class="letra">D</span> CSS Grid com <code>grid-template-areas</code></button>
+                    <button type="button" class="opt-choice" data-letra="E"><span class="letra">E</span> Flash Player via <code>&lt;embed&gt;</code></button>
+                </div>
+            </div>
+
+            <div class="question-box" id="aq8" data-correta="C">
+                <div class="q-title">
+                    <span class="q-numero">8</span>
+                    🎮 No Lab 3, qual função nativa do JavaScript é usada para criar o <strong>loop de animação</strong> do jogo?
+                </div>
+                <div class="options-list">
+                    <button type="button" class="opt-choice" data-letra="A"><span class="letra">A</span> <code>setInterval()</code> chamado a cada 16ms</button>
+                    <button type="button" class="opt-choice" data-letra="B"><span class="letra">B</span> <code>while(true) {}</code> travando o navegador</button>
+                    <button type="button" class="opt-choice" data-letra="C"><span class="letra">C</span> <code>requestAnimationFrame()</code>, que sincroniza com a taxa de atualização da tela</button>
+                    <button type="button" class="opt-choice" data-letra="D"><span class="letra">D</span> <code>setTimeout()</code> com 0 milissegundos</button>
+                    <button type="button" class="opt-choice" data-letra="E"><span class="letra">E</span> <code>Canvas.loop()</code>, um método nativo do canvas</button>
+                </div>
+            </div>
+
+            <div class="question-box" id="aq9" data-correta="D">
+                <div class="q-title">
+                    <span class="q-numero">9</span>
+                    💥 No Lab 3, como o código detecta que o morcego bateu em um obstáculo?
+                </div>
+                <div class="options-list">
+                    <button type="button" class="opt-choice" data-letra="A"><span class="letra">A</span> Chamando <code>element.click()</code> em cada obstáculo</button>
+                    <button type="button" class="opt-choice" data-letra="B"><span class="letra">B</span> Perguntando ao usuário via <code>alert()</code></button>
+                    <button type="button" class="opt-choice" data-letra="C"><span class="letra">C</span> Usando o método <code>canvas.detectCollision()</code></button>
+                    <button type="button" class="opt-choice" data-letra="D"><span class="letra">D</span> Calculando a distância entre as posições X/Y e comparando com a soma dos raios (colisão circular)</button>
+                    <button type="button" class="opt-choice" data-letra="E"><span class="letra">E</span> Enviando os dados para um servidor externo de física</button>
+                </div>
+            </div>
+
+            <div class="question-box" id="aq10" data-correta="B">
+                <div class="q-title">
+                    <span class="q-numero">10</span>
+                    ⚡ No Lab 3, o que a linha <code>var multiplicadorVelocidade = 1 + Math.floor(pontosMorcego / 100) * 0.4;</code> faz?
+                </div>
+                <div class="options-list">
+                    <button type="button" class="opt-choice" data-letra="A"><span class="letra">A</span> Divide os pontos do jogador por 100 e mostra no HUD</button>
+                    <button type="button" class="opt-choice" data-letra="B"><span class="letra">B</span> A cada 100 pontos, aumenta a velocidade dos obstáculos em 40% (1.0x, 1.4x, 1.8x...)</button>
+                    <button type="button" class="opt-choice" data-letra="C"><span class="letra">C</span> Cria 100 obstáculos extras na tela</button>
+                    <button type="button" class="opt-choice" data-letra="D"><span class="letra">D</span> Faz o morcego crescer 0.4 pixels a cada 100 pontos</button>
+                    <button type="button" class="opt-choice" data-letra="E"><span class="letra">E</span> Reinicia o jogo automaticamente ao atingir 100 pontos</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="acoes-avaliacao">
+            <button class="btn-widget red" onclick="limparAvaliacao()">🧹 Limpar Respostas</button>
+            <button class="btn-widget blue" onclick="preVisualizarPDF()">👁️ Pré-visualizar PDF</button>
+            <button class="btn-widget purple" onclick="prepararPDF()">🖨️ Imprimir em PDF para Envio</button>
+        </div>
+
+    </section>
+</div>
+
+</div>
+
+<!-- Área invisível para impressão em PDF -->
+<div id="area-impressao" class="area-impressao">
+    <div class="print-header">
+        <h1>🎃 Halloween Tech Lab — Avaliação do Caldeirão de Códigos</h1>
+        <p><strong>Aluno(a):</strong> <span id="print-nome">—</span> &nbsp; | &nbsp;
+           <strong>Turma:</strong> <span id="print-turma">—</span></p>
+        <p><strong>Data:</strong> <span id="print-data">—</span></p>
+    </div>
+    <div id="print-conteudo"></div>
+    <div class="print-footer">
+        <p><strong>Envie este PDF para o e-mail do professor ou plataforma da turma.</strong></p>
+        <p>As respostas não são corrigidas automaticamente. A avaliação é feita pelo professor.</p>
+    </div>
+</div>
+
+<script>
+/* ============================================================
+   BANCO DE CÓDIGOS DOS LABS
+   ============================================================ */
+var CODIGOS_LABS = {
+    lab1: {
+        html:
+'<div class="abobora-cena">\n' +
+'  <div class="reflexo-chao" id="reflexo-chao"></div>\n' +
+'  <svg class="abobora-svg" viewBox="0 0 240 260" id="abobora-svg"\n' +
+'       onclick="alternarChamaAbobora()">\n' +
+'    <defs>\n' +
+'      <radialGradient id="grad-abobora" cx="45%" cy="35%" r="70%">\n' +
+'        <stop offset="0%"  stop-color="#fb923c"/>\n' +
+'        <stop offset="55%" stop-color="#f97316"/>\n' +
+'        <stop offset="100%" stop-color="#7c2d12"/>\n' +
+'      </radialGradient>\n' +
+'      <radialGradient id="grad-gomo" cx="40%" cy="35%" r="75%">\n' +
+'        <stop offset="0%"  stop-color="#c2410c"/>\n' +
+'        <stop offset="100%" stop-color="#431407"/>\n' +
+'      </radialGradient>\n' +
+'      <radialGradient id="grad-brilho" cx="50%" cy="50%" r="50%">\n' +
+'        <stop offset="0%"  stop-color="#fef3c7" stop-opacity="1"/>\n' +
+'        <stop offset="40%" stop-color="#fbbf24" stop-opacity="0.85"/>\n' +
+'        <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>\n' +
+'      </radialGradient>\n' +
+'      <radialGradient id="grad-chama" cx="50%" cy="65%" r="60%">\n' +
+'        <stop offset="0%"  stop-color="#fff7d6"/>\n' +
+'        <stop offset="35%" stop-color="#fbbf24"/>\n' +
+'        <stop offset="70%" stop-color="#f97316"/>\n' +
+'        <stop offset="100%" stop-color="#b91c1c" stop-opacity="0.2"/>\n' +
+'      </radialGradient>\n' +
+'      <filter id="filtro-brilho" x="-50%" y="-50%" width="200%" height="200%">\n' +
+'        <feGaussianBlur stdDeviation="3" result="blur"/>\n' +
+'        <feMerge>\n' +
+'          <feMergeNode in="blur"/>\n' +
+'          <feMergeNode in="SourceGraphic"/>\n' +
+'        </feMerge>\n' +
+'      </filter>\n' +
+'      <filter id="filtro-glow-laranja" x="-80%" y="-80%" width="260%" height="260%">\n' +
+'        <feGaussianBlur stdDeviation="6" result="blur"/>\n' +
+'        <feMerge>\n' +
+'          <feMergeNode in="blur"/>\n' +
+'          <feMergeNode in="SourceGraphic"/>\n' +
+'        </feMerge>\n' +
+'      </filter>\n' +
+'      <filter id="filtro-fumaca" x="-50%" y="-50%" width="200%" height="200%">\n' +
+'        <feGaussianBlur stdDeviation="4"/>\n' +
+'      </filter>\n' +
+'    </defs>\n' +
+'\n' +
+'    <ellipse cx="120" cy="238" rx="82" ry="9" fill="rgba(0,0,0,0.55)"/>\n' +
+'    <ellipse cx="68"  cy="140" rx="42" ry="68" fill="url(#grad-gomo)"/>\n' +
+'    <ellipse cx="172" cy="140" rx="42" ry="68" fill="url(#grad-gomo)"/>\n' +
+'    <ellipse cx="88"  cy="135" rx="40" ry="66" fill="#c2410c" opacity="0.85"/>\n' +
+'    <ellipse cx="152" cy="135" rx="40" ry="66" fill="#c2410c" opacity="0.85"/>\n' +
+'    <ellipse cx="120" cy="140" rx="68" ry="78" fill="url(#grad-abobora)"/>\n' +
+'    <path d="M120 62 Q100 140 120 218" stroke="#7c2d12" stroke-width="2" fill="none" opacity="0.55"/>\n' +
+'    <path d="M120 62 Q140 140 120 218" stroke="#7c2d12" stroke-width="2" fill="none" opacity="0.55"/>\n' +
+'    <ellipse cx="95" cy="105" rx="26" ry="34" fill="#fdba74" opacity="0.35"/>\n' +
+'\n' +
+'    <ellipse id="brilho-interior" class="brilho-interior apagado"\n' +
+'             cx="120" cy="150" rx="58" ry="62" fill="url(#grad-brilho)" opacity="0"/>\n' +
+'\n' +
+'    <path d="M82 118 L104 96 L112 130 Z" fill="#0a0605"/>\n' +
+'    <path d="M158 118 L136 96 L128 130 Z" fill="#0a0605"/>\n' +
+'    <path d="M120 138 L108 154 L132 154 Z" fill="#0a0605"/>\n' +
+'    <path d="M78 172 Q92 158 108 172 Q120 158 132 172 Q148 158 162 172 Q152 200 120 202 Q88 200 78 172 Z" fill="#0a0605"/>\n' +
+'\n' +
+'    <g id="olhos-brilho" class="olhos-brilho apagado" filter="url(#filtro-brilho)">\n' +
+'      <path d="M82 118 L104 96 L112 130 Z" fill="#fde68a" opacity="0.85"/>\n' +
+'      <path d="M158 118 L136 96 L128 130 Z" fill="#fde68a" opacity="0.85"/>\n' +
+'    </g>\n' +
+'\n' +
+'    <path id="boca-brilho" class="boca-brilho apagado" filter="url(#filtro-brilho)"\n' +
+'          d="M78 172 Q92 158 108 172 Q120 158 132 172 Q148 158 162 172 Q152 200 120 202 Q88 200 78 172 Z"\n' +
+'          fill="#fb923c" opacity="0.75"/>\n' +
+'\n' +
+'    <g id="fumaca" class="fumaca apagado" filter="url(#filtro-fumaca)">\n' +
+'      <ellipse class="fumaca-puff" cx="120" cy="80" rx="10" ry="6" fill="#94a3b8" opacity="0.5"/>\n' +
+'      <ellipse class="fumaca-puff" cx="126" cy="60" rx="14" ry="8" fill="#94a3b8" opacity="0.35"/>\n' +
+'      <ellipse class="fumaca-puff" cx="115" cy="40" rx="18" ry="10" fill="#94a3b8" opacity="0.25"/>\n' +
+'    </g>\n' +
+'\n' +
+'    <g id="chama-abobora" class="chama apagada"\n' +
+'       transform="translate(120 155)" filter="url(#filtro-glow-laranja)">\n' +
+'      <ellipse class="chama-halo" cx="0" cy="0" rx="22" ry="30" fill="#f97316" opacity="0.35"/>\n' +
+'      <path class="chama-corpo"\n' +
+'            d="M0 -28 Q-9 -18 -8 -4 Q-7 8 0 12 Q7 8 8 -4 Q9 -18 0 -28 Z"\n' +
+'            fill="url(#grad-chama)"/>\n' +
+'      <ellipse class="chama-nucleo" cx="0" cy="2" rx="4" ry="8" fill="#fff7d6" opacity="0.95"/>\n' +
+'      <circle class="faisca f1" cx="0" cy="-10" r="1.6" fill="#fde68a">\n' +
+'        <animate attributeName="cy" from="-10" to="-60" dur="1.8s" repeatCount="indefinite"/>\n' +
+'        <animate attributeName="cx" from="0" to="-14" dur="1.8s" repeatCount="indefinite"/>\n' +
+'        <animate attributeName="opacity" from="1" to="0" dur="1.8s" repeatCount="indefinite"/>\n' +
+'      </circle>\n' +
+'      <circle class="faisca f2" cx="0" cy="-10" r="1.4" fill="#fbbf24">\n' +
+'        <animate attributeName="cy" from="-10" to="-70" dur="2.2s" begin="0.4s" repeatCount="indefinite"/>\n' +
+'        <animate attributeName="cx" from="0" to="12" dur="2.2s" begin="0.4s" repeatCount="indefinite"/>\n' +
+'        <animate attributeName="opacity" from="1" to="0" dur="2.2s" begin="0.4s" repeatCount="indefinite"/>\n' +
+'      </circle>\n' +
+'      <circle class="faisca f3" cx="0" cy="-10" r="1.2" fill="#fff7d6">\n' +
+'        <animate attributeName="cy" from="-10" to="-55" dur="1.6s" begin="0.8s" repeatCount="indefinite"/>\n' +
+'        <animate attributeName="cx" from="0" to="6" dur="1.6s" begin="0.8s" repeatCount="indefinite"/>\n' +
+'        <animate attributeName="opacity" from="1" to="0" dur="1.6s" begin="0.8s" repeatCount="indefinite"/>\n' +
+'      </circle>\n' +
+'    </g>\n' +
+'\n' +
+'    <path d="M110 68 Q120 40 142 38 Q134 58 128 70 Z" fill="#166534"/>\n' +
+'    <path d="M120 66 Q106 46 90 52 Q102 66 114 72 Z" fill="#16a34a"/>\n' +
+'  </svg>\n' +
+'\n' +
+'  <div id="estado-abobora">🌑 Abóbora apagada</div>\n' +
+'</div>',
+        css:
+'body { font-family: sans-serif; background: #0f172a; color: #f8fafc;\n' +
+'       display: flex; justify-content: center; align-items: center;\n' +
+'       min-height: 100vh; margin: 0; }\n' +
+'.abobora-cena { position: relative; text-align: center; }\n' +
+'.abobora-svg { width: 280px; height: 300px; cursor: pointer;\n' +
+'               filter: drop-shadow(0 12px 22px rgba(0,0,0,0.55));\n' +
+'               transition: transform 0.25s ease; user-select: none; }\n' +
+'.abobora-svg:hover { transform: translateY(-4px) scale(1.02); }\n' +
+'\n' +
+'.reflexo-chao {\n' +
+'  position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%);\n' +
+'  width: 260px; height: 40px; border-radius: 50%;\n' +
+'  background: radial-gradient(ellipse at center,\n' +
+'              rgba(249,115,22,0.55) 0%, transparent 75%);\n' +
+'  filter: blur(8px); opacity: 0; transition: opacity 0.6s ease;\n' +
+'  pointer-events: none;\n' +
+'}\n' +
+'.reflexo-chao.ativo { opacity: 1; }\n' +
+'\n' +
+'.chama { transform-origin: center bottom; transition: opacity 0.4s ease; }\n' +
+'.chama.apagada { opacity: 0; pointer-events: none; }\n' +
+'\n' +
+'.chama:not(.apagada) .chama-halo   { animation: haloPulsar 1.6s ease-in-out infinite alternate; }\n' +
+'.chama:not(.apagada) .chama-corpo  { animation: tremularCorpo 0.9s ease-in-out infinite alternate; }\n' +
+'.chama:not(.apagada) .chama-nucleo { animation: tremularNucleo 0.55s ease-in-out infinite alternate; }\n' +
+'\n' +
+'@keyframes haloPulsar {\n' +
+'  0%   { opacity: 0.25; transform: scale(0.92); }\n' +
+'  100% { opacity: 0.5;  transform: scale(1.1);  }\n' +
+'}\n' +
+'@keyframes tremularCorpo {\n' +
+'  0%   { transform: scaleY(1)    skewX(-2deg); }\n' +
+'  50%  { transform: scaleY(1.08) skewX(0deg);  }\n' +
+'  100% { transform: scaleY(0.94) skewX(2.5deg); }\n' +
+'}\n' +
+'@keyframes tremularNucleo {\n' +
+'  0%   { transform: scaleY(1)    translateX(-0.5px); }\n' +
+'  100% { transform: scaleY(1.15) translateX(0.5px);  }\n' +
+'}\n' +
+'\n' +
+'.brilho-interior { animation: pulsarBrilho 1.4s ease-in-out infinite alternate; }\n' +
+'.brilho-interior.apagado { opacity: 0 !important; animation: none; }\n' +
+'@keyframes pulsarBrilho {\n' +
+'  from { opacity: 0.55; transform: scale(0.96); }\n' +
+'  to   { opacity: 1;    transform: scale(1.05); }\n' +
+'}\n' +
+'.olhos-brilho, .boca-brilho { animation: brilhoInterno 1.2s ease-in-out infinite alternate; }\n' +
+'.olhos-brilho.apagado, .boca-brilho.apagado { opacity: 0 !important; animation: none; }\n' +
+'@keyframes brilhoInterno { from { opacity: 0.55; } to { opacity: 0.95; } }\n' +
+'\n' +
+'.fumaca { transition: opacity 0.5s ease; }\n' +
+'.fumaca.apagado { opacity: 0; pointer-events: none; }\n' +
+'.fumaca:not(.apagado) .fumaca-puff { animation: subirFumaca 3s ease-in-out infinite; }\n' +
+'.fumaca:not(.apagado) .fumaca-puff:nth-child(2) { animation-delay: 0.6s; }\n' +
+'.fumaca:not(.apagado) .fumaca-puff:nth-child(3) { animation-delay: 1.2s; }\n' +
+'@keyframes subirFumaca {\n' +
+'  0%   { transform: translateY(0)     scale(0.8); opacity: 0; }\n' +
+'  20%  { opacity: 0.55; }\n' +
+'  100% { transform: translateY(-45px) scale(1.4); opacity: 0; }\n' +
+'}',
+        js:
+'function alternarChamaAbobora() {\n' +
+'  var chama   = document.getElementById("chama-abobora");\n' +
+'  var brilho  = document.getElementById("brilho-interior");\n' +
+'  var olhos   = document.getElementById("olhos-brilho");\n' +
+'  var boca    = document.getElementById("boca-brilho");\n' +
+'  var fumaca  = document.getElementById("fumaca");\n' +
+'  var reflexo = document.getElementById("reflexo-chao");\n' +
+'  var texto   = document.getElementById("estado-abobora");\n' +
+'\n' +
+'  chama.classList.toggle("apagada");\n' +
+'  brilho.classList.toggle("apagado");\n' +
+'  olhos.classList.toggle("apagado");\n' +
+'  boca.classList.toggle("apagado");\n' +
+'  fumaca.classList.toggle("apagado");\n' +
+'\n' +
+'  var acesa = !chama.classList.contains("apagada");\n' +
+'  reflexo.classList.toggle("ativo", acesa);\n' +
+'  texto.innerText = acesa ? "🔥 Ab&#243;bora acesa!" : "🌑 Ab&#243;bora apagada";\n' +
+'}',
+        tudo: ''
+    },
+    lab2: {
+        html:
+'<div id="ceu-fantasmas">\n' +
+'  <div class="lua"></div>\n' +
+'</div>\n' +
+'<div>Fantasmas invocados: <span id="contador-fantasmas">0</span></div>\n' +
+'<button onclick="invocarFantasma()">✨ Invocar Fantasma</button>\n' +
+'<button onclick="invocarChuvaFantasmas()">🌪️ Chuva de Fantasmas (x5)</button>\n' +
+'<button onclick="limparFantasmas()">🧹 Limpar C&#233;u</button>',
+        css:
+'body { font-family: sans-serif; background: #05060b; color: #f1f5f9;\n' +
+'       padding: 30px; text-align: center; }\n' +
+'.ceu-fantasmas {\n' +
+'  position: relative; height: 320px;\n' +
+'  background: radial-gradient(circle at 50% 100%, #1a1030 0%, #05060b 80%);\n' +
+'  border-radius: 12px; overflow: hidden; margin-bottom: 20px;\n' +
+'}\n' +
+'.lua {\n' +
+'  position: absolute; top: 18px; right: 24px;\n' +
+'  width: 60px; height: 60px; border-radius: 50%;\n' +
+'  background: radial-gradient(circle at 35% 35%, #fef3c7, #facc15 60%, #b45309);\n' +
+'  box-shadow: 0 0 30px rgba(250, 204, 21, 0.55);\n' +
+'  animation: brilhoLua 3s ease-in-out infinite alternate;\n' +
+'}\n' +
+'@keyframes brilhoLua {\n' +
+'  from { box-shadow: 0 0 20px rgba(250, 204, 21, 0.4); }\n' +
+'  to   { box-shadow: 0 0 45px rgba(250, 204, 21, 0.8); }\n' +
+'}\n' +
+'.fantasma {\n' +
+'  position: absolute; bottom: -80px;\n' +
+'  font-size: 2.4rem; user-select: none; pointer-events: none;\n' +
+'  filter: drop-shadow(0 0 12px rgba(255,255,255,0.55));\n' +
+'  animation: subirFantasma 5s linear forwards;\n' +
+'}\n' +
+'@keyframes subirFantasma {\n' +
+'  0%   { transform: translateY(0)     scale(0.6);  opacity: 0; }\n' +
+'  10%  { opacity: 1; }\n' +
+'  80%  { opacity: 1; }\n' +
+'  100% { transform: translateY(-380px) scale(1.15) rotate(8deg); opacity: 0; }\n' +
+'}\n' +
+'button {\n' +
+'  background: #a855f7; color: white; border: none;\n' +
+'  padding: 10px 18px; border-radius: 20px; font-weight: bold;\n' +
+'  cursor: pointer; margin: 4px; font-family: inherit;\n' +
+'}',
+        js:
+'var totalFantasmas = 0;\n' +
+'\n' +
+'function invocarFantasma() {\n' +
+'  var ceu = document.getElementById("ceu-fantasmas");\n' +
+'  var fantasma = document.createElement("div");\n' +
+'  fantasma.className = "fantasma";\n' +
+'  fantasma.innerText = "\\uD83D\\uDC7B";\n' +
+'  fantasma.style.left = Math.floor(Math.random() * 88) + "%";\n' +
+'  ceu.appendChild(fantasma);\n' +
+'  setTimeout(function () { fantasma.remove(); }, 5000);\n' +
+'  totalFantasmas++;\n' +
+'  document.getElementById("contador-fantasmas").innerText = totalFantasmas;\n' +
+'}\n' +
+'\n' +
+'function invocarChuvaFantasmas() {\n' +
+'  for (var i = 0; i < 5; i++) {\n' +
+'    setTimeout(invocarFantasma, i * 200);\n' +
+'  }\n' +
+'}\n' +
+'\n' +
+'function limparFantasmas() {\n' +
+'  document.getElementById("ceu-fantasmas")\n' +
+'    .querySelectorAll(".fantasma")\n' +
+'    .forEach(function (f) { f.remove(); });\n' +
+'  totalFantasmas = 0;\n' +
+'  document.getElementById("contador-fantasmas").innerText = 0;\n' +
+'}',
+        tudo: ''
+    },
+    lab3: {
+        html:
+'<canvas id="canvas-morcego" width="960" height="340"></canvas>\n' +
+'<div>\n' +
+'  Pontos: <span id="hud-pontos">0</span> |\n' +
+'  Vidas: <span id="hud-vidas">&#x2665;&#x2665;&#x2665;</span>\n' +
+'</div>\n' +
+'<button onclick="iniciarJogoMorcego()">Iniciar Jogo</button>\n' +
+'<button onclick="subirMorcego()">Subir</button>\n' +
+'<button onclick="descerMorcego()">Descer</button>\n' +
+'<button onclick="pararJogoMorcego()">Parar</button>',
+        css:
+'body { background: #090a10; color: #f8fafc; font-family: sans-serif;\n' +
+'       display: flex; flex-direction: column; align-items: center;\n' +
+'       gap: 10px; padding: 20px; }\n' +
+'#canvas-morcego {\n' +
+'  display: block; width: 100%; max-width: 900px; height: 340px;\n' +
+'  background: linear-gradient(to bottom, #0a0618 0%, #1a0b2e 50%, #2a0f1f 100%);\n' +
+'  border-radius: 12px;\n' +
+'}\n' +
+'button {\n' +
+'  background: #f97316; color: white; border: none;\n' +
+'  padding: 10px 18px; border-radius: 20px; font-weight: bold;\n' +
+'  cursor: pointer; margin: 4px; font-family: inherit;\n' +
+'}',
+        js:
+'var canvas = document.getElementById("canvas-morcego");\n' +
+'var ctx = canvas.getContext("2d");\n' +
+'\n' +
+'var morcego = { x: 110, y: 170, vy: 0, tamanho: 22 };\n' +
+'var obstaculos = [];\n' +
+'var pontos = 0;\n' +
+'var vidas = 3;\n' +
+'var rodando = false;\n' +
+'var ultimoFrame = 0;\n' +
+'var contadorSpawn = 0;\n' +
+'var teclas = {};\n' +
+'\n' +
+'document.addEventListener("keydown", function (e) { teclas[e.key] = true; });\n' +
+'document.addEventListener("keyup",   function (e) { teclas[e.key] = false; });\n' +
+'\n' +
+'function subirMorcego()  { morcego.vy = -240; }\n' +
+'function descerMorcego() { morcego.vy =  240; }\n' +
+'\n' +
+'function iniciarJogoMorcego() {\n' +
+'  morcego = { x: 110, y: canvas.height / 2, vy: 0, tamanho: 22 };\n' +
+'  obstaculos = [];\n' +
+'  pontos = 0; vidas = 3; contadorSpawn = 0;\n' +
+'  rodando = true;\n' +
+'  ultimoFrame = performance.now();\n' +
+'  requestAnimationFrame(loop);\n' +
+'}\n' +
+'\n' +
+'function pararJogoMorcego() { rodando = false; }\n' +
+'\n' +
+'function loop(tempo) {\n' +
+'  if (!rodando) return;\n' +
+'  var dt = Math.min((tempo - ultimoFrame) / 1000, 0.05);\n' +
+'  ultimoFrame = tempo;\n' +
+'\n' +
+'  if (teclas["ArrowUp"]   || teclas["w"]) morcego.vy = -240;\n' +
+'  if (teclas["ArrowDown"] || teclas["s"]) morcego.vy =  240;\n' +
+'\n' +
+'  morcego.y += morcego.vy * dt;\n' +
+'  morcego.vy *= 0.88;\n' +
+'  if (morcego.y < 24) morcego.y = 24;\n' +
+'  if (morcego.y > canvas.height - 24) morcego.y = canvas.height - 24;\n' +
+'\n' +
+'  contadorSpawn += dt;\n' +
+'  if (contadorSpawn > 1.25) {\n' +
+'    contadorSpawn = 0;\n' +
+'    obstaculos.push({\n' +
+'      x: canvas.width + 40,\n' +
+'      y: 40 + Math.random() * (canvas.height - 100),\n' +
+'      r: 26,\n' +
+'      tipo: Math.random() < 0.4 ? "doce" : "tumulo"\n' +
+'    });\n' +
+'  }\n' +
+'\n' +
+'  // NOVA MEC&#194;NICA: a cada 100 pontos, +40% de velocidade\n' +
+'  var multiplicadorVelocidade = 1 + Math.floor(pontos / 100) * 0.4;\n' +
+'  obstaculos.forEach(function (o) { o.x -= 280 * multiplicadorVelocidade * dt; });\n' +
+'\n' +
+'  for (var i = obstaculos.length - 1; i >= 0; i--) {\n' +
+'    var o = obstaculos[i];\n' +
+'    var dx = o.x - morcego.x;\n' +
+'    var dy = o.y - morcego.y;\n' +
+'    if (Math.sqrt(dx*dx + dy*dy) < o.r + morcego.tamanho * 0.7) {\n' +
+'      if (o.tipo === "doce") pontos += 10;\n' +
+'      else { vidas--; if (vidas <= 0) rodando = false; }\n' +
+'      obstaculos.splice(i, 1);\n' +
+'    } else if (o.x < -50) {\n' +
+'      obstaculos.splice(i, 1);\n' +
+'    }\n' +
+'  }\n' +
+'\n' +
+'  document.getElementById("hud-pontos").innerText = pontos;\n' +
+'  document.getElementById("hud-vidas").innerText =\n' +
+'    "\\u2665".repeat(Math.max(0, vidas));\n' +
+'\n' +
+'  desenhar();\n' +
+'  if (rodando) requestAnimationFrame(loop);\n' +
+'}\n' +
+'\n' +
+'function desenhar() {\n' +
+'  var grad = ctx.createLinearGradient(0, 0, 0, canvas.height);\n' +
+'  grad.addColorStop(0, "#0a0618");\n' +
+'  grad.addColorStop(0.6, "#1a0b2e");\n' +
+'  grad.addColorStop(1, "#2a0f1f");\n' +
+'  ctx.fillStyle = grad;\n' +
+'  ctx.fillRect(0, 0, canvas.width, canvas.height);\n' +
+'\n' +
+'  ctx.fillStyle = "#fef3c7";\n' +
+'  ctx.beginPath();\n' +
+'  ctx.arc(canvas.width - 80, 60, 30, 0, Math.PI * 2);\n' +
+'  ctx.fill();\n' +
+'\n' +
+'  ctx.font = "32px serif";\n' +
+'  ctx.textAlign = "center";\n' +
+'  ctx.textBaseline = "middle";\n' +
+'  obstaculos.forEach(function (o) {\n' +
+'    ctx.fillText(o.tipo === "doce" ? "\\uD83C\\uDF6C" : "\\uD83E\\uDEA6", o.x, o.y);\n' +
+'  });\n' +
+'\n' +
+'  ctx.font = "44px serif";\n' +
+'  ctx.fillText("\\uD83E\\uDD87", morcego.x, morcego.y);\n' +
+'\n' +
+'  if (!rodando && vidas <= 0) {\n' +
+'    ctx.fillStyle = "rgba(0,0,0,0.72)";\n' +
+'    ctx.fillRect(0, 0, canvas.width, canvas.height);\n' +
+'    ctx.fillStyle = "#f97316";\n' +
+'    ctx.font = "bold 34px sans-serif";\n' +
+'    ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2 - 20);\n' +
+'    ctx.fillStyle = "#facc15";\n' +
+'    ctx.font = "bold 20px sans-serif";\n' +
+'    ctx.fillText("Pontos: " + pontos, canvas.width / 2, canvas.height / 2 + 20);\n' +
+'  }\n' +
+'}',
+        tudo: ''
+    }
+};
+
+/* Monta arquivo único */
+(function montarTudo() {
+    var head = function (titulo, css) {
+        return '<!DOCTYPE html>\n<html lang="pt-BR">\n<head>\n' +
+               '  <meta charset="UTF-8">\n' +
+               '  <title>' + titulo + '</title>\n' +
+               '  <style>\n' + css + '\n  </style>\n</head>\n<body>\n';
+    };
+    var foot = function (js) {
+        return '\n  <script>\n' + js + '\n  <\/script>\n</body>\n</html>';
+    };
+    CODIGOS_LABS.lab1.tudo = head('Lab 1 - Ab&#243;bora Viva', CODIGOS_LABS.lab1.css) +
+                             CODIGOS_LABS.lab1.html + foot(CODIGOS_LABS.lab1.js);
+    CODIGOS_LABS.lab2.tudo = head('Lab 2 - Invas&#227;o de Fantasmas', CODIGOS_LABS.lab2.css) +
+                             CODIGOS_LABS.lab2.html + foot(CODIGOS_LABS.lab2.js);
+    CODIGOS_LABS.lab3.tudo = head('Lab 3 - Voo do Morcego', CODIGOS_LABS.lab3.css) +
+                             CODIGOS_LABS.lab3.html + foot(CODIGOS_LABS.lab3.js);
+})();
+
+/* ============================================================
+   NAVEGAÇÃO DE ABAS
+   ============================================================ */
+function trocarAbaPrincipal(idAba, btn) {
+    document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
+    document.querySelectorAll('.tab-content').forEach(function (c) { c.classList.remove('active'); });
+    btn.classList.add('active');
+    document.getElementById(idAba).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function trocarAbaCodigo(labKey, tipo, btn) {
+    var card = document.getElementById('card-' + labKey);
+    card.querySelectorAll('.code-tab-btn').forEach(function (b) { b.classList.remove('active'); });
+    card.querySelectorAll('.code-pane').forEach(function (p) { p.classList.remove('active'); });
+    btn.classList.add('active');
+    document.getElementById(labKey + '-pane-' + tipo).classList.add('active');
+}
+
+/* ============================================================
+   ONECOMPILER — ABRIR VAZIO + TOAST
+   ============================================================ */
+function abrirOneCompilerVazio() {
+    window.open('https://onecompiler.com/html', '_blank');
+    mostrarToast(
+        '🚀 OneCompiler aberto!',
+        'Copie o código (aba 📦 Arquivo Único) e cole com Ctrl+V.'
+    );
+}
+
+function abrirNoOneCompiler() { abrirOneCompilerVazio(); }
+
+function mostrarToast(titulo, mensagem) {
+    var antigo = document.querySelector('.toast-copiado');
+    if (antigo) antigo.remove();
+
+    var toast = document.createElement('div');
+    toast.className = 'toast-copiado';
+    toast.innerHTML =
+        '<span class="icone-toast">✅</span>' +
+        '<div>' +
+            '<strong>' + titulo + '</strong><br>' +
+            '<span style="font-size:0.82rem;font-weight:600;">' + mensagem + '</span>' +
+        '</div>';
+    document.body.appendChild(toast);
+
+    setTimeout(function () {
+        toast.classList.add('saindo');
+        setTimeout(function () { toast.remove(); }, 350);
+    }, 4500);
+}
+
+/* ============================================================
+   COPIAR CÓDIGO DO LAB
+   ============================================================ */
+function copiarTrechoLab(labKey, btn) {
+    var card = document.getElementById('card-' + labKey);
+    var paneAtiva = card.querySelector('.code-pane.active pre');
+    if (!paneAtiva) return;
+
+    var texto = paneAtiva.textContent;
+    var paneId = paneAtiva.parentElement.id;
+    var tipo = paneId.split('-pane-')[1] || 'tudo';
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texto).then(function () {
+            feedbackCopiar(btn);
+            mostrarToast('📋 Código copiado! (' + tipo.toUpperCase() + ')',
+                         'Cole no OneCompiler com Ctrl+V.');
+        }).catch(function () {
+            copiarFallback(texto);
+            feedbackCopiar(btn);
+            mostrarToast('📋 Código copiado!', 'Cole no OneCompiler com Ctrl+V.');
+        });
+    } else {
+        copiarFallback(texto);
+        feedbackCopiar(btn);
+        mostrarToast('📋 Código copiado!', 'Cole no OneCompiler com Ctrl+V.');
+    }
+}
+
+function copiarFallback(texto) {
+    var ta = document.createElement('textarea');
+    ta.value = texto;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+}
+
+function feedbackCopiar(btn) {
+    var original = btn.textContent;
+    btn.textContent = '✅ Copiado!';
+    btn.style.background = '#16a34a';
+    setTimeout(function () {
+        btn.textContent = original;
+        btn.style.background = '';
+    }, 1800);
+}
+
+/* ============================================================
+   LAB 1 — INTERAÇÃO DA ABÓBORA
+   ============================================================ */
+function alternarChamaAbobora() {
+    var svg      = document.getElementById('abobora-svg');
+    var chama    = document.getElementById('chama-abobora');
+    var brilho   = document.getElementById('brilho-interior');
+    var olhos    = document.getElementById('olhos-brilho');
+    var boca     = document.getElementById('boca-brilho');
+    var fumaca   = document.getElementById('fumaca');
+    var reflexo  = document.getElementById('reflexo-chao');
+    var texto    = document.getElementById('estado-abobora');
+
+    if (!chama || !brilho || !olhos || !boca || !fumaca || !reflexo || !texto) return;
+
+    chama.classList.toggle('apagada');
+    brilho.classList.toggle('apagado');
+    olhos.classList.toggle('apagado');
+    boca.classList.toggle('apagado');
+    fumaca.classList.toggle('apagado');
+
+    var acesa = !chama.classList.contains('apagada');
+    reflexo.classList.toggle('ativo', acesa);
+    texto.classList.toggle('acesa', acesa);
+    texto.innerText = acesa
+        ? '🔥 Abóbora acesa! Clique para apagar.'
+        : '🌑 Abóbora apagada — clique nela para acender!';
+
+    if (svg) {
+        svg.classList.remove('pulsando');
+        void svg.offsetWidth;
+        svg.classList.add('pulsando');
+    }
+
+    var corpo = chama.querySelector('.chama-corpo');
+    if (corpo) {
+        corpo.style.animationDuration = (0.7 + Math.random() * 0.5).toFixed(2) + 's';
+    }
+}
+
+/* ============================================================
+   LAB 2 — FANTASMAS
+   ============================================================ */
+var totalFantasmas = 0;
+
+function invocarFantasma() {
+    var ceu = document.getElementById('ceu-fantasmas');
+    if (!ceu) return;
+    var fantasma = document.createElement('div');
+    fantasma.className = 'fantasma';
+    fantasma.innerText = '👻';
+    fantasma.style.left = Math.floor(Math.random() * 88) + '%';
+    var escala = 0.8 + Math.random() * 0.6;
+    fantasma.style.fontSize = (escala * 2.4) + 'rem';
+    ceu.appendChild(fantasma);
+    setTimeout(function () { fantasma.remove(); }, 5000);
+    totalFantasmas++;
+    document.getElementById('contador-fantasmas').innerText = totalFantasmas;
+}
+
+function invocarChuvaFantasmas() {
+    for (var i = 0; i < 5; i++) {
+        setTimeout(invocarFantasma, i * 200);
+    }
+}
+
+function limparFantasmas() {
+    var ceu = document.getElementById('ceu-fantasmas');
+    if (!ceu) return;
+    ceu.querySelectorAll('.fantasma').forEach(function (f) { f.remove(); });
+    totalFantasmas = 0;
+    document.getElementById('contador-fantasmas').innerText = 0;
+}
+
+/* ============================================================
+   LAB 3 — VOO DO MORCEGO
+   ============================================================ */
+var canvasMorcego = null;
+var ctxMorcego = null;
+var morcego = { x: 110, y: 170, vy: 0, tamanho: 22 };
+var obstaculos = [];
+var pontosMorcego = 0;
+var vidasMorcego = 3;
+var recordeMorcego = 0;
+var rodandoMorcego = false;
+var ultimoFrame = 0;
+var contadorSpawn = 0;
+var teclas = {};
+
+function initCanvasMorcego() {
+    canvasMorcego = document.getElementById('canvas-morcego');
+    if (!canvasMorcego) return;
+    ctxMorcego = canvasMorcego.getContext('2d');
+    function ajustar() {
+        var r = canvasMorcego.getBoundingClientRect();
+        canvasMorcego.width  = Math.max(600, r.width);
+        canvasMorcego.height = 340;
+    }
+    ajustar();
+    window.addEventListener('resize', ajustar);
+    desenharMorcego();
+}
+
+function subirMorcego()  { morcego.vy = -240; }
+function descerMorcego() { morcego.vy =  240; }
+
+function iniciarJogoMorcego() {
+    if (!canvasMorcego) initCanvasMorcego();
+    morcego = { x: 110, y: canvasMorcego.height / 2, vy: 0, tamanho: 22 };
+    obstaculos = [];
+    pontosMorcego = 0;
+    vidasMorcego = 3;
+    contadorSpawn = 0;
+    rodandoMorcego = true;
+    ultimoFrame = performance.now();
+    document.getElementById('hud-pontos').innerText = '0';
+    document.getElementById('hud-vidas').innerText = '♥♥♥';
+    document.getElementById('hud-velocidade').style.display = 'none';
+    requestAnimationFrame(loopMorcego);
+}
+
+function pararJogoMorcego() { rodandoMorcego = false; }
+
+function loopMorcego(tempo) {
+    if (!rodandoMorcego) return;
+    var dt = Math.min((tempo - ultimoFrame) / 1000, 0.05);
+    ultimoFrame = tempo;
+
+    if (teclas['ArrowUp']   || teclas['w'] || teclas['W']) morcego.vy = -240;
+    if (teclas['ArrowDown'] || teclas['s'] || teclas['S']) morcego.vy =  240;
+
+    morcego.y += morcego.vy * dt;
+    morcego.vy *= 0.88;
+    if (morcego.y < 24) morcego.y = 24;
+    if (morcego.y > canvasMorcego.height - 24) morcego.y = canvasMorcego.height - 24;
+
+    contadorSpawn += dt;
+    if (contadorSpawn > 1.25) {
+        contadorSpawn = 0;
+        obstaculos.push({
+            x: canvasMorcego.width + 40,
+            y: 40 + Math.random() * (canvasMorcego.height - 100),
+            r: 26,
+            tipo: Math.random() < 0.4 ? 'doce' : 'tumulo'
+        });
+    }
+
+    var multiplicadorVelocidade = 1 + Math.floor(pontosMorcego / 100) * 0.4;
+    obstaculos.forEach(function (o) { o.x -= 280 * multiplicadorVelocidade * dt; });
+
+    for (var i = obstaculos.length - 1; i >= 0; i--) {
+        var o = obstaculos[i];
+        var dx = o.x - morcego.x;
+        var dy = o.y - morcego.y;
+        if (Math.sqrt(dx*dx + dy*dy) < o.r + morcego.tamanho * 0.7) {
+            if (o.tipo === 'doce') pontosMorcego += 10;
+            else {
+                vidasMorcego--;
+                if (vidasMorcego <= 0) {
+                    rodandoMorcego = false;
+                    if (pontosMorcego > recordeMorcego) {
+                        recordeMorcego = pontosMorcego;
+                        document.getElementById('hud-recorde').innerText = recordeMorcego;
+                    }
+                }
+            }
+            obstaculos.splice(i, 1);
+        } else if (o.x < -50) {
+            obstaculos.splice(i, 1);
+        }
+    }
+
+    document.getElementById('hud-pontos').innerText = pontosMorcego;
+    document.getElementById('hud-vidas').innerText = '♥'.repeat(Math.max(0, vidasMorcego));
+
+    var hudVel = document.getElementById('hud-velocidade');
+    if (hudVel) {
+        if (multiplicadorVelocidade > 1) {
+            hudVel.style.display = 'inline-block';
+            hudVel.innerText = '⚡ Velocidade x' + multiplicadorVelocidade.toFixed(1);
+        } else {
+            hudVel.style.display = 'none';
+        }
+    }
+
+    desenharMorcego();
+    if (rodandoMorcego) requestAnimationFrame(loopMorcego);
+}
+
+function desenharMorcego() {
+    if (!ctxMorcego) return;
+    var w = canvasMorcego.width;
+    var h = canvasMorcego.height;
+
+    var grad = ctxMorcego.createLinearGradient(0, 0, 0, h);
+    grad.addColorStop(0, '#0a0618');
+    grad.addColorStop(0.6, '#1a0b2e');
+    grad.addColorStop(1, '#2a0f1f');
+    ctxMorcego.fillStyle = grad;
+    ctxMorcego.fillRect(0, 0, w, h);
+
+    ctxMorcego.fillStyle = '#fef3c7';
+    ctxMorcego.beginPath();
+    ctxMorcego.arc(w - 80, 60, 30, 0, Math.PI * 2);
+    ctxMorcego.fill();
+
+    ctxMorcego.fillStyle = 'rgba(255,255,255,0.7)';
+    for (var i = 0; i < 25; i++) {
+        var sx = (i * 97) % w;
+        var sy = (i * 53) % (h / 2);
+        ctxMorcego.fillRect(sx, sy, 2, 2);
+    }
+
+    ctxMorcego.font = '32px serif';
+    ctxMorcego.textAlign = 'center';
+    ctxMorcego.textBaseline = 'middle';
+    obstaculos.forEach(function (o) {
+        ctxMorcego.fillText(o.tipo === 'doce' ? '🍬' : '🪦', o.x, o.y);
+    });
+
+    ctxMorcego.font = '44px serif';
+    ctxMorcego.fillText('🦇', morcego.x, morcego.y);
+
+    if (!rodandoMorcego && vidasMorcego <= 0) {
+        ctxMorcego.fillStyle = 'rgba(0,0,0,0.72)';
+        ctxMorcego.fillRect(0, 0, w, h);
+        ctxMorcego.fillStyle = '#f97316';
+        ctxMorcego.font = 'bold 34px sans-serif';
+        ctxMorcego.fillText('GAME OVER', w / 2, h / 2 - 20);
+        ctxMorcego.fillStyle = '#facc15';
+        ctxMorcego.font = 'bold 20px sans-serif';
+        ctxMorcego.fillText('Pontos: ' + pontosMorcego, w / 2, h / 2 + 20);
+    }
+}
+
+document.addEventListener('keydown', function (e) {
+    teclas[e.key] = true;
+    if (document.getElementById('aba-codigos').classList.contains('active') &&
+        (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+        e.preventDefault();
+    }
+});
+document.addEventListener('keyup', function (e) { teclas[e.key] = false; });
+
+/* ============================================================
+   QUIZ CULTURAL
+   ============================================================ */
+var respostasQuiz = {};
+
+function responderQuiz(qId, btn, correta) {
+    var box = document.getElementById(qId);
+    box.querySelectorAll('.opt-choice').forEach(function (b) {
+        b.classList.remove('correct', 'wrong');
+        b.classList.add('locked');
+    });
+    if (correta) { btn.classList.add('correct'); respostasQuiz[qId] = true; }
+    else { btn.classList.add('wrong'); respostasQuiz[qId] = false; }
+}
+
+function calcularResultadoQuiz() {
+    var acertos = 0;
+    for (var i = 1; i <= 5; i++) {
+        if (respostasQuiz['q' + i] === true) acertos++;
+    }
+    var box = document.getElementById('quiz-resultado-box');
+    box.classList.add('show');
+    document.getElementById('score-display').innerText = acertos + ' / 5';
+    var fb = document.getElementById('feedback-magico');
+    if (acertos === 5) {
+        fb.innerText = '🧙 Mestre Supremo da Magia! Você gabaritou tudo!';
+        fb.style.color = 'var(--green)';
+    } else if (acertos >= 3) {
+        fb.innerText = '🎃 Fantástico! Você conhece muito sobre o folclore do Halloween!';
+        fb.style.color = 'var(--orange)';
+    } else {
+        fb.innerText = '💀 Bom começo! Leia as abas de história e tente novamente!';
+        fb.style.color = 'var(--yellow)';
+    }
+    box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+/* ============================================================
+   AVALIAÇÃO OBJETIVA — SELEÇÃO SEM GABARITO + PROGRESSO + PDF
+   ============================================================ */
+var respostasAvaliacao = {};
+
+document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.opt-choice');
+    if (!btn) return;
+    var box = btn.closest('.question-box');
+    if (!box || !box.id.startsWith('aq')) return;
+
+    box.querySelectorAll('.opt-choice').forEach(function (b) {
+        b.classList.remove('selecionada');
+    });
+    btn.classList.add('selecionada');
+    respostasAvaliacao[box.id] = btn.dataset.letra;
+    box.classList.add('respondida');
+    atualizarProgressoAvaliacao();
+});
+
+function atualizarProgressoAvaliacao() {
+    var total = 10;
+    var respondidas = 0;
+    for (var i = 1; i <= total; i++) {
+        if (respostasAvaliacao['aq' + i]) respondidas++;
+    }
+    var porcento = Math.round((respondidas / total) * 100);
+    document.getElementById('progresso-texto').innerText = respondidas + ' de ' + total;
+    document.getElementById('progresso-porcento').innerText = porcento + '%';
+    document.getElementById('progresso-fill').style.width = porcento + '%';
+}
+
+function limparAvaliacao() {
+    if (!confirm('⚠️ Tem certeza que deseja apagar todas as respostas?')) return;
+    respostasAvaliacao = {};
+    document.querySelectorAll('#form-avaliacao .question-box').forEach(function (box) {
+        box.classList.remove('respondida');
+        box.querySelectorAll('.opt-choice').forEach(function (b) {
+            b.classList.remove('selecionada');
+        });
+    });
+    atualizarProgressoAvaliacao();
+}
+
+/* Prepara os dados e monta a área de impressão */
+function montarConteudoImpressao() {
+    var nome  = document.getElementById('aluno-nome').value.trim();
+    var turma = document.getElementById('aluno-turma').value.trim();
+
+    document.getElementById('print-nome').innerText = nome || '—';
+    document.getElementById('print-turma').innerText = turma || '—';
+    var hoje = new Date();
+    document.getElementById('print-data').innerText =
+        hoje.toLocaleDateString('pt-BR') + ' às ' +
+        hoje.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+    var container = document.getElementById('print-conteudo');
+    container.innerHTML = '';
+
+    var questoes = document.querySelectorAll('#form-avaliacao .question-box');
+
+    questoes.forEach(function (q, index) {
+        var num = index + 1;
+        var titulo = q.querySelector('.q-title').innerText
+                       .replace(/^\s*\d+[\.\)]?\s*/, '')
+                       .trim();
+
+        var bloco = document.createElement('div');
+        bloco.className = 'print-questao';
+
+        var h = document.createElement('h4');
+        h.innerText = 'Questão ' + num;
+        bloco.appendChild(h);
+
+        var pTitulo = document.createElement('p');
+        pTitulo.innerText = titulo;
+        bloco.appendChild(pTitulo);
+
+        var resp = document.createElement('div');
+        resp.className = 'resp-aluno';
+
+        var escolhida = q.querySelector('.opt-choice.selecionada');
+        if (escolhida) {
+            var letra = escolhida.dataset.letra || '';
+            var texto = escolhida.innerText.replace(/^[A-E]\s*/, '').trim();
+            resp.innerText = '✅ Alternativa marcada: ' + letra + ') ' + texto;
+        } else {
+            resp.className += ' resp-vazia';
+            resp.innerText = '⚠️ (Questão não respondida)';
+        }
+
+        bloco.appendChild(resp);
+        container.appendChild(bloco);
+    });
+}
+
+function prepararPDF() {
+    var nome = document.getElementById('aluno-nome').value.trim();
+    if (!nome) {
+        alert('⚠️ Por favor, preencha o nome do aluno antes de imprimir.');
+        document.getElementById('aluno-nome').focus();
+        return;
+    }
+
+    var faltando = [];
+    for (var i = 1; i <= 10; i++) {
+        if (!respostasAvaliacao['aq' + i]) faltando.push(i);
+    }
+    if (faltando.length > 0) {
+        var continuar = confirm(
+            '⚠️ Você deixou ' + faltando.length + ' questão(ões) em branco:\n' +
+            'Questões: ' + faltando.join(', ') + '\n\n' +
+            'Deseja imprimir mesmo assim?'
+        );
+        if (!continuar) return;
+    }
+
+    // 1) Monta o conteúdo da área de impressão
+    montarConteudoImpressao();
+
+    // 2) Esconde o container principal ANTES de imprimir
+    var container = document.querySelector('.container');
+    var areaImp  = document.getElementById('area-impressao');
+
+    // Guarda o estado original para restaurar depois
+    var containerDisplayOriginal = container.style.display;
+    var areaDisplayOriginal      = areaImp.style.display;
+
+    container.style.display = 'none';
+    areaImp.style.display   = 'block';
+    areaImp.style.position  = 'static';
+
+    // 3) Espera o layout se recalcular e imprime
+    setTimeout(function () {
+        // Força reflow
+        void areaImp.offsetHeight;
+
+        window.print();
+
+        // 4) Restaura o estado após o diálogo de impressão fechar
+        setTimeout(function () {
+            container.style.display = containerDisplayOriginal || '';
+            areaImp.style.display   = areaDisplayOriginal || '';
+            areaImp.style.position  = '';
+        }, 500);
+    }, 100);
+}
+
+/* Pré-visualização em nova aba */
+function preVisualizarPDF() {
+    montarConteudoImpressao();
+
+    var nome  = document.getElementById('print-nome').innerText;
+    var turma = document.getElementById('print-turma').innerText;
+    var data  = document.getElementById('print-data').innerText;
+    var conteudo = document.getElementById('print-conteudo').innerHTML;
+
+    var html = '<!DOCTYPE html><html lang="pt-BR"><head>' +
+        '<meta charset="UTF-8">' +
+        '<title>Pré-visualização — Avaliação Halloween</title>' +
+        '<style>' +
+        'body { font-family: "Segoe UI", Arial, sans-serif; padding: 30px;' +
+        '       background: #f5f5f5; color: #000; max-width: 800px; margin: auto; }' +
+        '.print-header { border-bottom: 3px solid #a855f7; padding-bottom: 10px;' +
+        '                margin-bottom: 20px; }' +
+        '.print-header h1 { color: #6b21a8; font-size: 1.4rem; margin: 0 0 8px 0; }' +
+        '.print-header p { margin: 2px 0; }' +
+        '.print-questao { border-left: 4px solid #f97316; padding: 10px 14px;' +
+        '                 margin-bottom: 14px; background: #fff; border-radius: 6px; }' +
+        '.print-questao h4 { color: #6b21a8; margin: 0 0 6px 0; font-size: 0.95rem; }' +
+        '.print-questao p { margin: 0 0 6px 0; }' +
+        '.print-questao .resp-aluno { background: #fff8e6; border: 1px dashed #f97316;' +
+        '                             padding: 8px 10px; border-radius: 6px;' +
+        '                             font-size: 0.9rem; margin-top: 4px; }' +
+        '.print-questao .resp-vazia { color: #b91c1c; font-style: italic; }' +
+        '.print-footer { margin-top: 30px; padding-top: 14px;' +
+        '                border-top: 2px dashed #a855f7; text-align: center;' +
+        '                font-size: 0.85rem; color: #333; }' +
+        '</style></head><body>' +
+        '<div class="print-header">' +
+        '<h1>🎃 Halloween Tech Lab — Avaliação do Caldeirão de Códigos</h1>' +
+        '<p><strong>Aluno(a):</strong> ' + escapeHtml(nome) +
+        ' | <strong>Turma:</strong> ' + escapeHtml(turma) + '</p>' +
+        '<p><strong>Data:</strong> ' + escapeHtml(data) + '</p>' +
+        '</div>' + conteudo +
+        '<div class="print-footer">' +
+        '<p><strong>Esta é a pré-visualização do PDF.</strong> ' +
+        'Clique em 🖨️ Imprimir em PDF para gerar o arquivo final.</p>' +
+        '</div></body></html>';
+
+    var janela = window.open('', '_blank', 'width=900,height=800');
+    janela.document.write(html);
+    janela.document.close();
+}
+
+function escapeHtml(s) {
+    return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+/* ============================================================
+   INICIALIZAÇÃO
+   ============================================================ */
+window.addEventListener('DOMContentLoaded', function () {
+    ['lab1', 'lab2', 'lab3'].forEach(function (labKey) {
+        ['html', 'css', 'js', 'tudo'].forEach(function (tipo) {
+            var pre = document.querySelector('#' + labKey + '-pane-' + tipo + ' pre');
+            if (pre) pre.textContent = CODIGOS_LABS[labKey][tipo];
+        });
+    });
+    initCanvasMorcego();
+    atualizarProgressoAvaliacao();
+});
+</script>
+
+</body>
+</html>
